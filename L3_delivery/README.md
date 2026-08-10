@@ -120,23 +120,45 @@ python eval_l1_rewrite_official_style.py --local-full <out>/multi_style_full.jso
 
 ---
 
-## 六、样例展示（中文 QA v3.30，判官 closeness=3 / 忠实=5）
+## 六、样例展示（四条线各一例，均取自封板产出，未改动）
 
-> 一条脑卒中科普原文的产出，展示 v3.30「强制题型」效果：判断题 + 原因题 + 选择题（带正确项+依据）+ 事实题俱全，全部忠实可原文定位。
+### 6.1 中文 QA（v3.30，判官 closeness=3 / 忠实=5）
+脑卒中科普原文，展示「强制题型」效果：判断/选择/原因/事实题俱全，全部忠实可原文定位。
 
-**原文（节选）**：
-> 看 1 张脸是不是对称的，有没有出现眼斜、嘴歪；2 看 2 条手臂是否有单侧无力；0 代表聆听，就是听有没有言语不清。如果有，就要怀疑是不是中风……脑出血发生后，会对脑神经造成损害，其恢复极为缓慢……因此，防患于未然的预防工作显得格外重要——1. 已确诊高血压的患者一定要遵医嘱按时服药……2. 饮食上，低盐、低脂……
-
-**QA 产出（原文在前，问答对追加于后；此处只列问答对）**：
+**原文（节选）**：看 1 张脸是否对称、有无眼斜嘴歪；2 看手臂是否单侧无力；0 代表聆听有无言语不清。如果有，就要怀疑是不是中风……脑出血恢复极为缓慢……预防工作显得格外重要——高血压患者一定要遵医嘱按时服药……饮食上低盐、低脂……
 
 | 题型 | 问题 | 答案 |
 |------|------|------|
-| 判断题 | 判断以下说法是否正确：发现有人眼斜嘴歪或单侧手臂无力时，应立即拨打120并怀疑可能是中风。 | 正确。文档指出看脸是否对称、有无眼斜嘴歪，以及看手臂是否有单侧无力，如果有这些症状就要怀疑是不是中风，并应立刻拨打120。 |
-| 事实题 | 在怀疑患者可能中风的情况下，若伴随哪些诱因需特别警惕脑出血？ | 若伴有高血压或情绪激动等诱因，需警惕是不是脑出血。 |
-| 选择题 | 下列哪项不属于文档中提到的脑出血生活或饮食预防措施？A. 多食富含粗纤维的食物 B. 戒烟戒酒 C. 换季注意保暖或防暑 D. 每日进行高强度运动以增强体质 | D。文档中提到的措施包括多食粗纤维食物、戒烟戒酒、换季注意保暖防暑等，并未提及每日高强度运动，反而提到要避免过度劳累。 |
-| 原因题 | 为什么文档强调脑出血的预防工作显得格外重要？ | 因为脑出血发生后对脑神经造成损害，恢复极为缓慢且严重时无法再生，救治过程漫长痛苦、花费巨大且效果可能不成比例，对家庭和社会都是沉重负担。 |
+| 判断题 | 判断以下说法是否正确：发现有人眼斜嘴歪或单侧手臂无力时，应立即拨打120并怀疑可能是中风。 | 正确。文档指出看脸是否对称、有无眼斜嘴歪，看手臂是否单侧无力，有这些症状就要怀疑中风并立刻拨打120。 |
+| 选择题 | 下列哪项不属于文档提到的脑出血预防措施？A. 多食粗纤维食物 B. 戒烟戒酒 C. 换季注意保暖防暑 D. 每日高强度运动 | D。文档提到多食粗纤维、戒烟戒酒、换季保暖防暑等，未提每日高强度运动，反而要避免过度劳累。 |
+| 原因题 | 为什么文档强调脑出血的预防工作显得格外重要？ | 因为脑出血对脑神经造成损害、恢复极为缓慢且严重时无法再生，救治漫长痛苦、花费巨大，对家庭和社会都是沉重负担。 |
 
-> 更多四方对照样例（原文 + 官方 QA + v3.30 + v3.28/v3.31）见 `qwen_L3/zh/qa/compare_*.md`；四线各 30 条样例见 `samples/L3_四线封板样例汇总.xlsx`；中文 QA 全量人工可读表见 `qwen_L3/zh/qa/qa_zh_v330_交付数据_人工可读.xlsx`。
+### 6.2 英文 QA（v1-hardened，忠实/无幻觉近满分）
+科技论文原文，问答自足、答案可逐句定位。
+
+**Source（节选）**：The membrane used in Guerra's experiment, known as a mixed ionic-electronic conduction (MIEC) membrane, is developmentally at its "very first steps" in being coupled with plasma…
+
+| Question | Answer |
+|------|------|
+| What is the technical name of the membrane used in Guerra's experiment? | Mixed ionic-electronic conduction (MIEC) membrane |
+| How does the paper describe the developmental stage of coupling the MIEC membrane with plasma? | It is at its 'very first steps' |
+| What challenges to the use of MIEC membranes are listed by the researchers? | Stability in CO2 and the possibility of back reactions that can lessen the membrane's effectiveness |
+
+### 6.3 中文 rewrite（v4.3.5-v5090，风格=encyclopedia）
+去网页口语、重组为客观连贯正文；0 编造、0 漏关键信息。
+
+**原文（节选）**：因为疫情的蔓延，户外活动次数的骤减，老师们只好绞尽脑汁……当我把整只白白、素面的风筝发下去……我先播放如何折叠风筝的教学影片给小朋友看，大声强调，仔细说明，木棍要重叠……
+
+**改写（encyclopedia 风格）**：受疫情蔓延导致户外活动减少的影响，教师通过增加课堂丰富性，组织学生制作并绘制可翱翔天空的风筝。在分发空白素面风筝后，教师担心学生因无法正确收合支撑木棍而导致风筝无法飞行，因此播放折叠教学影片，强调木棍需重叠摆放，并指导学生进行多次操作练习……
+
+### 6.4 英文 rewrite（v3.7，风格=blog）
+清洗网页碎片、保留全部事实，重组为自然博客文体；忠实近满分。
+
+**Source（节选）**：The EPA's Multispecies Care Survey is featured in a new online exhibition organized for Broto's Art-Climate-Science annual conference which provides an online c…
+
+**Rewrite（blog 风格）**：The EPA's Multispecies Care Survey is currently featured in a new online exhibition titled "Agency." The showcase was organized for Broto's Art-Climate-Science annual conference, which serves as an online c…
+
+> 更多样例：四线各 30 条汇总见 `samples/L3_四线封板样例汇总.xlsx`；中文 QA 四方对照（原文+官方+v3.30+v3.28/v3.31）见 `qwen_L3/zh/qa/compare_*.md`；中文 QA 全量人工可读表见 `qwen_L3/zh/qa/qa_zh_v330_交付数据_人工可读.xlsx`。
 
 ---
 
