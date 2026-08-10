@@ -1,0 +1,755 @@
+{
+  "boolean_counts": {
+    "adds_unseen_facts": 0,
+    "drops_key_information": 0,
+    "drops_key_technical_parameter": 0,
+    "keeps_brand_ad_noise": 0,
+    "keeps_web_noise_unnecessarily": 1,
+    "too_abstract_short": 1,
+    "too_conversational": 0,
+    "too_markdown_or_template": 1,
+    "too_textbook_like": 2,
+    "unsupported_numeric_correction": 0
+  },
+  "by_internal_style": {
+    "abstract": {
+      "bool_counts": {
+        "adds_unseen_facts": 0,
+        "drops_key_information": 0,
+        "drops_key_technical_parameter": 0,
+        "keeps_brand_ad_noise": 0,
+        "keeps_web_noise_unnecessarily": 1,
+        "too_abstract_short": 1,
+        "too_conversational": 0,
+        "too_markdown_or_template": 0,
+        "too_textbook_like": 1,
+        "unsupported_numeric_correction": 0
+      },
+      "faithfulness_score_mean": 4.84,
+      "n": 25,
+      "official_style_closeness_score_mean": 4.52,
+      "overall_score_mean": 4.72,
+      "refinement_value_score_mean": 4.64
+    },
+    "blog": {
+      "bool_counts": {
+        "adds_unseen_facts": 0,
+        "drops_key_information": 0,
+        "drops_key_technical_parameter": 0,
+        "keeps_brand_ad_noise": 0,
+        "keeps_web_noise_unnecessarily": 0,
+        "too_abstract_short": 0,
+        "too_conversational": 0,
+        "too_markdown_or_template": 0,
+        "too_textbook_like": 0,
+        "unsupported_numeric_correction": 0
+      },
+      "faithfulness_score_mean": 4.88,
+      "n": 25,
+      "official_style_closeness_score_mean": 4.76,
+      "overall_score_mean": 4.84,
+      "refinement_value_score_mean": 4.68
+    },
+    "encyclopedia": {
+      "bool_counts": {
+        "adds_unseen_facts": 0,
+        "drops_key_information": 0,
+        "drops_key_technical_parameter": 0,
+        "keeps_brand_ad_noise": 0,
+        "keeps_web_noise_unnecessarily": 0,
+        "too_abstract_short": 0,
+        "too_conversational": 0,
+        "too_markdown_or_template": 0,
+        "too_textbook_like": 0,
+        "unsupported_numeric_correction": 0
+      },
+      "faithfulness_score_mean": 4.9167,
+      "n": 24,
+      "official_style_closeness_score_mean": 4.625,
+      "overall_score_mean": 4.75,
+      "refinement_value_score_mean": 4.6667
+    },
+    "textbook": {
+      "bool_counts": {
+        "adds_unseen_facts": 0,
+        "drops_key_information": 0,
+        "drops_key_technical_parameter": 0,
+        "keeps_brand_ad_noise": 0,
+        "keeps_web_noise_unnecessarily": 0,
+        "too_abstract_short": 0,
+        "too_conversational": 0,
+        "too_markdown_or_template": 1,
+        "too_textbook_like": 1,
+        "unsupported_numeric_correction": 0
+      },
+      "faithfulness_score_mean": 4.84,
+      "n": 25,
+      "official_style_closeness_score_mean": 4.56,
+      "overall_score_mean": 4.64,
+      "refinement_value_score_mean": 4.64
+    }
+  },
+  "failure": 1,
+  "failure_samples": [
+    {
+      "content_length": 475,
+      "failure_reason": "judge_output_not_object",
+      "internal_style": "encyclopedia",
+      "judge_perf": {
+        "api_attempts": 1,
+        "elapsed_seconds": 18.3644,
+        "finish_reason": "stop",
+        "process_cpu_seconds": 0.0156,
+        "retry_sleeps_seconds": 0,
+        "temperature_omitted": false,
+        "usage": {
+          "completion_tokens": 2229,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 1904,
+            "rejected_prediction_tokens": null,
+            "text_tokens": 2229
+          },
+          "prompt_tokens": 7722,
+          "prompt_tokens_details": null,
+          "total_tokens": 9951
+        }
+      },
+      "raw_judge_prefix": "{\n  \"faithfulness_score\": 5,\n  \"information_retention_score\": 5,\n  \"refinement_value_score\": 5,\n  \"official_style_closeness_score\": 4,\n  \"natural_prose_score\": 5,\n  \"low_template_score\": 5,\n  \"appropriate_length_score\": 5,\n  \"noise_handling_score\": 5,\n  \"hallucination_risk_score\": 5,\n  \"overall_score\": 5,\n  \"too_markdown_or_template\": false,\n  \"too_textbook_like\": false,\n  \"too_conversational\": false,\n  \"too_abstract_short\": false,\n  \"adds_unseen_facts\": false,\n  \"drops_key_information\": false,\n  \"keeps_web_noise_unnecessarily\": false,\n  \"keeps_brand_ad_noise\": false,\n  \"unsupported_numeric_correction\": false,\n  \"drops_key_technical_parameter\": false,\n  \"main_gap\": 文本结构仍保留明显的书籍简介/摘要分段逻辑，虽信息完整且行文流畅，但可进一步打破原段落边界，融合为更连贯的学术叙述语态以贴近官方多风格正文特征。\n  \"prompt_fix\": \"下一版提示词应强调‘按语义逻辑重组段落而非照搬原文分段，采用连贯的学术综述语态替代简介式结构，确保改写后文本更符合百科正文或理论阐述的自然段落特征’。\"\n}",
+      "source_length": 537,
+      "status": "failure",
+      "uid": "93a4059b-ba6d-4af2-a7b0-1d7495ecffc4"
+    }
+  ],
+  "inputs": {
+    "judge_model": "qwen3.6-35b-a3b",
+    "judged_rows": 100,
+    "judged_unique_source_docs": 25,
+    "local_full": "outputs/rewrite_v4_3_5_qwen3_6_27b_n500_v6_chunks_merged_2026-07-28/multi_style_full.jsonl",
+    "local_full_arg": ".\\outputs\\rewrite_v4_3_5_qwen3_6_27b_n500_v6_chunks_merged_2026-07-28\\multi_style_full.jsonl",
+    "local_selection": {
+      "mode": "explicit",
+      "selected": "outputs/rewrite_v4_3_5_qwen3_6_27b_n500_v6_chunks_merged_2026-07-28/multi_style_full.jsonl"
+    },
+    "local_total_rows_available": 1989,
+    "local_unique_source_docs_available": 500,
+    "n_limit": 100,
+    "official_anchor_count": 16,
+    "official_profile": "data/eval/zh/official_zh_multi_style_profile.json",
+    "official_raw": "data/official/zh/multi_style_raw.jsonl",
+    "official_reference_count": 200
+  },
+  "judge_performance_summary": {
+    "api_attempts_per_100_judge": 100.0,
+    "api_attempts_total": 100,
+    "completion_tokens_total": 242830,
+    "process_cpu_seconds_sum": 3.1235,
+    "prompt_tokens_total": 779888,
+    "request_elapsed_seconds_max": 56.9016,
+    "request_elapsed_seconds_mean": 24.4855,
+    "request_elapsed_seconds_min": 14.0677,
+    "rows_with_perf": 100,
+    "token_usage_available_rows": 100,
+    "token_usage_missing_rows": 0,
+    "total_tokens_per_100_judge": 1022718.0,
+    "total_tokens_per_judge": 10227.18,
+    "total_tokens_total": 1022718
+  },
+  "outputs": {
+    "jsonl": ".\\data\\eval\\zh\\eval_l1_rewrite_official_style_qwen3_6_27b_v4_3_5_chunks_merged_n100.jsonl",
+    "summary_json": ".\\data\\eval\\zh\\eval_l1_rewrite_official_style_qwen3_6_27b_v4_3_5_chunks_merged_n100_summary.json",
+    "summary_md": ".\\data\\eval\\zh\\eval_l1_rewrite_official_style_qwen3_6_27b_v4_3_5_chunks_merged_n100_summary.md"
+  },
+  "score_summary": {
+    "appropriate_length_score": {
+      "distribution": {
+        "2": 1,
+        "3": 1,
+        "4": 28,
+        "5": 69
+      },
+      "mean": 4.6667,
+      "median": 5
+    },
+    "faithfulness_score": {
+      "distribution": {
+        "3": 2,
+        "4": 9,
+        "5": 88
+      },
+      "mean": 4.8687,
+      "median": 5
+    },
+    "hallucination_risk_score": {
+      "distribution": {
+        "4": 2,
+        "5": 97
+      },
+      "mean": 4.9798,
+      "median": 5
+    },
+    "information_retention_score": {
+      "distribution": {
+        "4": 10,
+        "5": 89
+      },
+      "mean": 4.899,
+      "median": 5
+    },
+    "low_template_score": {
+      "distribution": {
+        "2": 1,
+        "3": 1,
+        "4": 3,
+        "5": 94
+      },
+      "mean": 4.9192,
+      "median": 5
+    },
+    "natural_prose_score": {
+      "distribution": {
+        "2": 1,
+        "3": 2,
+        "4": 20,
+        "5": 76
+      },
+      "mean": 4.7273,
+      "median": 5
+    },
+    "noise_handling_score": {
+      "distribution": {
+        "2": 1,
+        "3": 1,
+        "4": 7,
+        "5": 90
+      },
+      "mean": 4.8788,
+      "median": 5
+    },
+    "official_style_closeness_score": {
+      "distribution": {
+        "2": 2,
+        "3": 3,
+        "4": 26,
+        "5": 68
+      },
+      "mean": 4.6162,
+      "median": 5
+    },
+    "overall_score": {
+      "distribution": {
+        "3": 3,
+        "4": 20,
+        "5": 76
+      },
+      "mean": 4.7374,
+      "median": 5
+    },
+    "refinement_value_score": {
+      "distribution": {
+        "3": 3,
+        "4": 28,
+        "5": 68
+      },
+      "mean": 4.6566,
+      "median": 5
+    }
+  },
+  "success": 99,
+  "top_prompt_fix": [
+    {
+      "count": 1,
+      "fix": "建议在提示词中明确技术类文本应优先采用紧凑段落结构，严格压缩冗余修饰语，并确保专业术语与公约名称的绝对准确。"
+    },
+    {
+      "count": 1,
+      "fix": "在后续提示词中明确：当原文信息密度较低时，允许通过补充同类作业场景、安全规范背景或设备原理说明来自然延展篇幅，但严禁虚构数据或脱离原文语境添加无关内容。"
+    },
+    {
+      "count": 1,
+      "fix": "要求模型在忠实原文的前提下，主动优化长难句的逻辑切分，补充必要的因果/递进衔接，使专业内容的叙述更符合自然科普行文的流畅度与信息密度。"
+    },
+    {
+      "count": 1,
+      "fix": "维持当前高保真与去冗余策略，后续生成时注意在信息密集处合理划分段落，避免过度压缩导致阅读节奏单一。"
+    },
+    {
+      "count": 1,
+      "fix": "建议在保持无标题、无列表的纯文本风格前提下，允许按内容逻辑（如先引诗后述人）进行合理分段，并添加简短过渡词以提升行文流畅度。"
+    },
+    {
+      "count": 1,
+      "fix": "移除所有引导性、总结性元话语，直接以平实连贯的段落将诗歌文本与作者生平、文学成就有机融合，保持客观陈述语气即可。"
+    },
+    {
+      "count": 1,
+      "fix": "提示词应明确允许根据内容属性（如诗文引用、生平履历、文学评价）进行合理分段，避免过度追求单一结构而导致信息堆砌与阅读节奏断裂。"
+    },
+    {
+      "count": 1,
+      "fix": "维持当前去标题化与连贯叙事策略，后续可补充‘长传记类内容建议按时间或主题自然分段’的提示以优化视觉节奏。"
+    },
+    {
+      "count": 1,
+      "fix": "在保持信息精炼与结构连贯的同时，提示模型适当保留教育反思类文本的叙事节奏与适度人文温度，避免转化为冷峻的纯客观报告。"
+    },
+    {
+      "count": 1,
+      "fix": "要求以自然叙述视角重写，保留原文的情感脉络与课堂细节，避免使用“活动分为…环节”“建议…”等说明书式句式，增强段落间的流畅过渡与反思性表达。"
+    },
+    {
+      "count": 1,
+      "fix": "若需保留教育叙事特质，可在提示词中明确‘保持第一人称视角与教学反思的情感温度’；若以客观精炼为主，当前改写已完全符合官方多风格成品标准。"
+    },
+    {
+      "count": 1,
+      "fix": "提示词应明确要求保留原文的人文叙事基调，采用连贯的散文式表达替代摘要式罗列，避免过度使用公文或报告语态。"
+    },
+    {
+      "count": 1,
+      "fix": "建议在指令中明确保留原文所有客观数据与核心特征，适度重组句式以提升连贯性，避免为追求简洁而过度删减非冗余的描述性内容。"
+    },
+    {
+      "count": 1,
+      "fix": "当前指令已能稳定引导模型清洗网页碎片并输出连贯正文；建议在系统提示中补充‘对汽车/机械类文本，在保留原参数基础上可用一句客观陈述补充核心系统的工作原理或典型工况’，以自然提升技术类内容的信息密度。"
+    },
+    {
+      "count": 1,
+      "fix": "在生成指令中补充“建议按外观描述与动力参数等逻辑层次自然分段，提升阅读呼吸感”即可。"
+    },
+    {
+      "count": 1,
+      "fix": "维持当前客观精炼的叙述节奏，后续处理同类资讯时可直接沿用此结构，无需额外调整。"
+    },
+    {
+      "count": 1,
+      "fix": "提示词应要求保留原文中的具体出处与背景细节，并通过合理的逻辑衔接自然扩充篇幅，避免过度精简导致长度偏离官方样本的中位数区间。"
+    },
+    {
+      "count": 1,
+      "fix": "提示词应强调保留原文的情感基调与收尾结构，避免过度书面化导致文本失去可读性与连贯性，鼓励在严谨基础上保持自然流畅的科普叙述风格。"
+    },
+    {
+      "count": 1,
+      "fix": "建议在提示词中增加‘若原文信息较简略，可在不新增事实的前提下适当补充逻辑过渡或背景说明，避免过度压缩导致成文过短’的要求。"
+    },
+    {
+      "count": 1,
+      "fix": "保持当前对网络噪声的清洗与逻辑重组策略，后续可针对同类短科普文本强调‘适度展开背景衔接’以避免行文过紧。"
+    }
+  ],
+  "total": 100,
+  "weakness_analysis": {
+    "flag_examples": {
+      "adds_unseen_facts": [],
+      "drops_key_information": [],
+      "drops_key_technical_parameter": [],
+      "keeps_brand_ad_noise": [],
+      "keeps_web_noise_unnecessarily": [
+        {
+          "flags": [
+            "keeps_web_noise_unnecessarily"
+          ],
+          "internal_style": "abstract",
+          "main_gap": "未清理原文中的明显OCR乱码与断句错误（如“01985年”“探科耶勒鲁普彗星相遇”及末尾孤立的“65万张照片”），导致信息连贯性受损。",
+          "prompt_fix": "要求模型在改写时主动识别并修正明显的排版/OCR噪声（如多余数字、断裂词组、无主语句），对孤立信息进行合理归并或删减，而非机械保留。",
+          "rewrite_head": "苏联重点聚焦金星探测，“金星7号”于1970年安全着陆金星，成为首个从其他行星表面向地球传送数据的探测器；“金星15号”与“金星16号”绘制了金星表面的雷达探测地图。与此同时，美国太空总署将探测重心转向火星及外层行星。美国发射的“先锋10号”成为首个飞出太阳系的探测器，“先锋11号”于1979年抵达土星。“旅行者1号”于1980年到达土星；一年后，“旅行者2号”掠过土星，并于1986年访问天王星，1989年飞抵海王星，期间发现了围绕海王星的一个环状系统及6颗卫星。欧洲太空局于1985年7月使用“阿里亚娜1号”火箭发...",
+          "scores": {
+            "faithfulness_score": 3,
+            "hallucination_risk_score": 5,
+            "low_template_score": 5,
+            "noise_handling_score": 2,
+            "official_style_closeness_score": 4,
+            "overall_score": 3
+          },
+          "source_head": "历史上各国派出了哪些探测器探寻金星 “金星7号”探测器于1970年安全着陆于金星，并且成为第一个从其他行星表面向地球传送数据的空间探测器。 “金星15号”和“金星16号”绘制了金星表面的雷达探测地图。 就在苏联关注金星探测的同时，美国太空总署则更关注火星以及更外层的行星的探测。 01985年7月欧洲太空局用“阿里亚娜1号”火箭将空间美国太空总署发射的“先锋10号”探测器是首个飞出太阳系的探科耶勒鲁普彗星相遇。 “先锋11号”在1979...",
+          "uid": "44ca54fe-f6b0-4b79-a387-548deaf6f506"
+        }
+      ],
+      "too_abstract_short": [
+        {
+          "flags": [
+            "too_abstract_short"
+          ],
+          "internal_style": "abstract",
+          "main_gap": "篇幅严重不足且过度浓缩为单段摘要体，缺乏官方多风格文本应有的信息展开、段落层次与自然叙述节奏。",
+          "prompt_fix": "提示词需明确禁止过度精简，要求基于原文核心观点进行合理扩写与逻辑分层，生成500字以上、多段落连贯的自然正文，避免写成高度压缩的摘要或提纲。",
+          "rewrite_head": "病毒与人类长期共存是大概率事件。即便科技高度发展或人类发生演变，病毒仍会以适宜的方式隐显存在，难以像部分珍稀物种般灭绝，人类与自然的演化史及新冠等病原体展现出的坚韧性、衍生力与悠久历史均为此提供了佐证。生物多样性与生态平衡是地球存续的基础，但人类日益增长的自私、霸道与贪婪正不断破坏这一平衡，必然引发大自然出于自卫的强烈反噬。造物主的公正性在此得以体现，此次疫情爆发恰当其时，相当程度抑制了人类愈发疯狂的行为，使地球获得喘息与修正的机会。作为地球的主导者，人类亟需重新审视与万物的相处之道，其核心在于人类自身，关键在于首...",
+          "scores": {
+            "faithfulness_score": 5,
+            "hallucination_risk_score": 5,
+            "low_template_score": 5,
+            "noise_handling_score": 4,
+            "official_style_closeness_score": 2,
+            "overall_score": 3
+          },
+          "source_head": "(6:生物多样性) 病毒与人类长期共存应是大概率的事件。即使科技发展到逆天，人类变异成仙，病毒依然以适合的方式存在，或隐或显，不大可能像一些珍稀动物被惨遭灭绝，这从我们已知的人类与大自然的演化史可以找到有力的佐证。有些病原体，比如新冠，它的坚韧性、渗透性以及衍生力和狡猾性并不逊色于人类，它的历史比人类甚至更悠久。 生物的多样性和生态的基本平衡是地球存在的基础，如同世界是多边的而不是单极的。而人类的自私、霸道和贪婪正日益破坏这一平衡，如此...",
+          "uid": "b89c6169-4bef-41ca-af23-06cab17503a1"
+        }
+      ],
+      "too_conversational": [],
+      "too_markdown_or_template": [
+        {
+          "flags": [
+            "too_markdown_or_template",
+            "too_textbook_like"
+          ],
+          "internal_style": "textbook",
+          "main_gap": "改写过度结构化与说明文化，采用“环节划分+建议口吻”的教案模板格式，偏离了官方多风格自然连贯的叙述基调。",
+          "prompt_fix": "要求以自然叙述视角重写，保留原文的情感脉络与课堂细节，避免使用“活动分为…环节”“建议…”等说明书式句式，增强段落间的流畅过渡与反思性表达。",
+          "rewrite_head": "风筝制作与绘画活动是一项结合手工结构与主题创作的课堂实践。该活动主要适用于户外活动时间受限的情况，旨在通过动手操作与艺术表达丰富课堂体验，同时帮助参与者释放对户外活动的期待，并在过程中锻炼耐心与专注力。 活动分为结构组装与主题绘画两个核心环节。在组装阶段，风筝的支撑木棍需采用重叠摆放的方式固定，这是保证风筝在风力作用下保持完整的关键。若木棍断裂或固定不当，即使画面精美也无法正常飞行。为掌握正确的折叠与收合方法，建议先观看标准的教学演示，并配合多次实际操作练习。经过一次完整观看与针对性练习后，九成以上的参与者能够独立...",
+          "scores": {
+            "faithfulness_score": 4,
+            "hallucination_risk_score": 5,
+            "low_template_score": 2,
+            "noise_handling_score": 4,
+            "official_style_closeness_score": 2,
+            "overall_score": 3
+          },
+          "source_head": "因为疫情的蔓延，户外活动次数的骤减，老师们只好绞尽脑汁，增加课堂上的丰富性，来画一个可以在天空翱翔的风筝吧！ 当我把整只白白、素面的风筝发下去，放到小朋友的桌子上时，小朋友的表情就开始不一样了。刚开始，我很担心小朋友不会收合，因为支撑的木棍断了，再大的风吹，画得漂亮的风筝，也飞不起来。所以我先播放如何折叠风筝的教学影片给小朋友看，大声强调，仔细说明，木棍要重叠摆放好，再请小朋友多次操作练习，影片播放一次，居然就有九成以上的小朋友，一次完...",
+          "uid": "f63e7d96-695a-4baf-86d7-45c0799d0cc4"
+        }
+      ],
+      "too_textbook_like": [
+        {
+          "flags": [
+            "too_markdown_or_template",
+            "too_textbook_like"
+          ],
+          "internal_style": "textbook",
+          "main_gap": "改写过度结构化与说明文化，采用“环节划分+建议口吻”的教案模板格式，偏离了官方多风格自然连贯的叙述基调。",
+          "prompt_fix": "要求以自然叙述视角重写，保留原文的情感脉络与课堂细节，避免使用“活动分为…环节”“建议…”等说明书式句式，增强段落间的流畅过渡与反思性表达。",
+          "rewrite_head": "风筝制作与绘画活动是一项结合手工结构与主题创作的课堂实践。该活动主要适用于户外活动时间受限的情况，旨在通过动手操作与艺术表达丰富课堂体验，同时帮助参与者释放对户外活动的期待，并在过程中锻炼耐心与专注力。 活动分为结构组装与主题绘画两个核心环节。在组装阶段，风筝的支撑木棍需采用重叠摆放的方式固定，这是保证风筝在风力作用下保持完整的关键。若木棍断裂或固定不当，即使画面精美也无法正常飞行。为掌握正确的折叠与收合方法，建议先观看标准的教学演示，并配合多次实际操作练习。经过一次完整观看与针对性练习后，九成以上的参与者能够独立...",
+          "scores": {
+            "faithfulness_score": 4,
+            "hallucination_risk_score": 5,
+            "low_template_score": 2,
+            "noise_handling_score": 4,
+            "official_style_closeness_score": 2,
+            "overall_score": 3
+          },
+          "source_head": "因为疫情的蔓延，户外活动次数的骤减，老师们只好绞尽脑汁，增加课堂上的丰富性，来画一个可以在天空翱翔的风筝吧！ 当我把整只白白、素面的风筝发下去，放到小朋友的桌子上时，小朋友的表情就开始不一样了。刚开始，我很担心小朋友不会收合，因为支撑的木棍断了，再大的风吹，画得漂亮的风筝，也飞不起来。所以我先播放如何折叠风筝的教学影片给小朋友看，大声强调，仔细说明，木棍要重叠摆放好，再请小朋友多次操作练习，影片播放一次，居然就有九成以上的小朋友，一次完...",
+          "uid": "f63e7d96-695a-4baf-86d7-45c0799d0cc4"
+        },
+        {
+          "flags": [
+            "too_textbook_like"
+          ],
+          "internal_style": "abstract",
+          "main_gap": "文本仍保留较强的教案/教学指导模板痕迹，大量使用‘让学生’‘教师巡视’等指令性表述，缺乏官方成品那种自然连贯的说明性叙述风格。",
+          "prompt_fix": "提示词应明确要求将教案步骤转化为连贯的知识讲解或教学过程描述，弱化师生互动指令，增强数学概念与练习逻辑的自然衔接。",
+          "rewrite_head": "人教版小学数学第三册关于乘法算式各部分名称的教学，练习时可先出示“4+4+4=12”，引导学生读出加法算式并指出相同加数是几、有几个相同加数；随后让学生根据加法算式写出乘法算式，再出示“4×3=12”进行朗读并说出各部分名称。建议将此类内容制成多张不同数值的卡片以便反复练习。巩固环节首先完成教科书第21页“做一做”：第1题要求学生看图填写，以相同加数作被乘数，相同加数的个数作乘数，最后写出乘法算式，教师巡视时需重点关注被乘数与乘数的位置是否正确；第2题则需学生依据“几个几相加”的乘法含义，明确被乘数与乘数的区别及其...",
+          "scores": {
+            "faithfulness_score": 5,
+            "hallucination_risk_score": 5,
+            "low_template_score": 4,
+            "noise_handling_score": 5,
+            "official_style_closeness_score": 3,
+            "overall_score": 4
+          },
+          "source_head": "人教版小学数学第三册教案 乘法算式中的各部分名称 练习时先出示44412让学生读加法算式说出相用加数是几有几个相同加数。 然后让学生看着加法算式说出乘法算式后再出示4×312读出乘法算式说出乘法算式各部分的名称。 这样的卡片应制成不同内容的多张卡片以便反复练习。 三、巩固练习 1做教科书第21页上\"做一做\"的练习。 做第1题时让学生先看图按照图中的内容分别填出相同的加数是几就用几做被乘数有几个相同加数就用几做乘数最后写出乘法算式。 教师...",
+          "uid": "0c850f0b-3b2d-4956-85a4-5358288c44d8"
+        }
+      ],
+      "unsupported_numeric_correction": []
+    },
+    "low_score_samples": [
+      {
+        "flags": [
+          "too_markdown_or_template",
+          "too_textbook_like"
+        ],
+        "internal_style": "textbook",
+        "main_gap": "改写过度结构化与说明文化，采用“环节划分+建议口吻”的教案模板格式，偏离了官方多风格自然连贯的叙述基调。",
+        "prompt_fix": "要求以自然叙述视角重写，保留原文的情感脉络与课堂细节，避免使用“活动分为…环节”“建议…”等说明书式句式，增强段落间的流畅过渡与反思性表达。",
+        "rewrite_head": "风筝制作与绘画活动是一项结合手工结构与主题创作的课堂实践。该活动主要适用于户外活动时间受限的情况，旨在通过动手操作与艺术表达丰富课堂体验，同时帮助参与者释放对户外活动的期待，并在过程中锻炼耐心与专注力。 活动分为结构组装与主题绘画两个核心环节。在组装阶段，风筝的支撑木棍需采用重叠摆放的方式固定，这是保证风筝在风力作用下保持完整的关键。若木棍断裂或固定不当，即使画面精美也无法正常飞行。为掌握正确的折叠与收合方法，建议先观看标准的教学演示，并配合多次实际操作练习。经过一次完整观看与针对性练习后，九成以上的参与者能够独立...",
+        "scores": {
+          "faithfulness_score": 4,
+          "hallucination_risk_score": 5,
+          "low_template_score": 2,
+          "noise_handling_score": 4,
+          "official_style_closeness_score": 2,
+          "overall_score": 3
+        },
+        "source_head": "因为疫情的蔓延，户外活动次数的骤减，老师们只好绞尽脑汁，增加课堂上的丰富性，来画一个可以在天空翱翔的风筝吧！ 当我把整只白白、素面的风筝发下去，放到小朋友的桌子上时，小朋友的表情就开始不一样了。刚开始，我很担心小朋友不会收合，因为支撑的木棍断了，再大的风吹，画得漂亮的风筝，也飞不起来。所以我先播放如何折叠风筝的教学影片给小朋友看，大声强调，仔细说明，木棍要重叠摆放好，再请小朋友多次操作练习，影片播放一次，居然就有九成以上的小朋友，一次完...",
+        "uid": "f63e7d96-695a-4baf-86d7-45c0799d0cc4"
+      },
+      {
+        "flags": [
+          "too_abstract_short"
+        ],
+        "internal_style": "abstract",
+        "main_gap": "篇幅严重不足且过度浓缩为单段摘要体，缺乏官方多风格文本应有的信息展开、段落层次与自然叙述节奏。",
+        "prompt_fix": "提示词需明确禁止过度精简，要求基于原文核心观点进行合理扩写与逻辑分层，生成500字以上、多段落连贯的自然正文，避免写成高度压缩的摘要或提纲。",
+        "rewrite_head": "病毒与人类长期共存是大概率事件。即便科技高度发展或人类发生演变，病毒仍会以适宜的方式隐显存在，难以像部分珍稀物种般灭绝，人类与自然的演化史及新冠等病原体展现出的坚韧性、衍生力与悠久历史均为此提供了佐证。生物多样性与生态平衡是地球存续的基础，但人类日益增长的自私、霸道与贪婪正不断破坏这一平衡，必然引发大自然出于自卫的强烈反噬。造物主的公正性在此得以体现，此次疫情爆发恰当其时，相当程度抑制了人类愈发疯狂的行为，使地球获得喘息与修正的机会。作为地球的主导者，人类亟需重新审视与万物的相处之道，其核心在于人类自身，关键在于首...",
+        "scores": {
+          "faithfulness_score": 5,
+          "hallucination_risk_score": 5,
+          "low_template_score": 5,
+          "noise_handling_score": 4,
+          "official_style_closeness_score": 2,
+          "overall_score": 3
+        },
+        "source_head": "(6:生物多样性) 病毒与人类长期共存应是大概率的事件。即使科技发展到逆天，人类变异成仙，病毒依然以适合的方式存在，或隐或显，不大可能像一些珍稀动物被惨遭灭绝，这从我们已知的人类与大自然的演化史可以找到有力的佐证。有些病原体，比如新冠，它的坚韧性、渗透性以及衍生力和狡猾性并不逊色于人类，它的历史比人类甚至更悠久。 生物的多样性和生态的基本平衡是地球存在的基础，如同世界是多边的而不是单极的。而人类的自私、霸道和贪婪正日益破坏这一平衡，如此...",
+        "uid": "b89c6169-4bef-41ca-af23-06cab17503a1"
+      },
+      {
+        "flags": [],
+        "internal_style": "abstract",
+        "main_gap": "文本过度压缩为教学汇报体，语言偏书面凝练，缺乏官方多风格成品所强调的自然叙述语感与适度细节保留。",
+        "prompt_fix": "提示词应明确要求保留原文的人文叙事基调，采用连贯的散文式表达替代摘要式罗列，避免过度使用公文或报告语态。",
+        "rewrite_head": "受疫情蔓延与户外活动骤减影响，教师为丰富课堂内容，组织学生制作并绘制风筝。发放素面风筝后，教师担忧支撑木棍断裂将影响飞行，遂播放折叠教学影片，反复强调木棍需重叠摆放并安排实操练习。影片仅播放一次，便有九成以上学生首次操作即告成功。本次课程以海洋教育为主题，要求学生绘制海洋生物或复用过往海洋学习单内容。课堂随之活跃，有学生提出绘制大𫚉鱼，亦有学生打算画蓝天白云，教师虽曾暗自顾虑单一颜色画满风筝会显枯燥艰巨，但学生仍按各自志趣创作。历经三堂课，风筝终于绘制完毕。成品色彩饱满，鱼眼炯炯有神，学生笔下的蓝天白云最终变成了蓝...",
+        "scores": {
+          "faithfulness_score": 5,
+          "hallucination_risk_score": 5,
+          "low_template_score": 3,
+          "noise_handling_score": 5,
+          "official_style_closeness_score": 3,
+          "overall_score": 4
+        },
+        "source_head": "因为疫情的蔓延，户外活动次数的骤减，老师们只好绞尽脑汁，增加课堂上的丰富性，来画一个可以在天空翱翔的风筝吧！ 当我把整只白白、素面的风筝发下去，放到小朋友的桌子上时，小朋友的表情就开始不一样了。刚开始，我很担心小朋友不会收合，因为支撑的木棍断了，再大的风吹，画得漂亮的风筝，也飞不起来。所以我先播放如何折叠风筝的教学影片给小朋友看，大声强调，仔细说明，木棍要重叠摆放好，再请小朋友多次操作练习，影片播放一次，居然就有九成以上的小朋友，一次完...",
+        "uid": "fdb35160-fdb3-4ec2-b146-03bd2b2cc426"
+      },
+      {
+        "flags": [
+          "too_textbook_like"
+        ],
+        "internal_style": "abstract",
+        "main_gap": "文本仍保留较强的教案/教学指导模板痕迹，大量使用‘让学生’‘教师巡视’等指令性表述，缺乏官方成品那种自然连贯的说明性叙述风格。",
+        "prompt_fix": "提示词应明确要求将教案步骤转化为连贯的知识讲解或教学过程描述，弱化师生互动指令，增强数学概念与练习逻辑的自然衔接。",
+        "rewrite_head": "人教版小学数学第三册关于乘法算式各部分名称的教学，练习时可先出示“4+4+4=12”，引导学生读出加法算式并指出相同加数是几、有几个相同加数；随后让学生根据加法算式写出乘法算式，再出示“4×3=12”进行朗读并说出各部分名称。建议将此类内容制成多张不同数值的卡片以便反复练习。巩固环节首先完成教科书第21页“做一做”：第1题要求学生看图填写，以相同加数作被乘数，相同加数的个数作乘数，最后写出乘法算式，教师巡视时需重点关注被乘数与乘数的位置是否正确；第2题则需学生依据“几个几相加”的乘法含义，明确被乘数与乘数的区别及其...",
+        "scores": {
+          "faithfulness_score": 5,
+          "hallucination_risk_score": 5,
+          "low_template_score": 4,
+          "noise_handling_score": 5,
+          "official_style_closeness_score": 3,
+          "overall_score": 4
+        },
+        "source_head": "人教版小学数学第三册教案 乘法算式中的各部分名称 练习时先出示44412让学生读加法算式说出相用加数是几有几个相同加数。 然后让学生看着加法算式说出乘法算式后再出示4×312读出乘法算式说出乘法算式各部分的名称。 这样的卡片应制成不同内容的多张卡片以便反复练习。 三、巩固练习 1做教科书第21页上\"做一做\"的练习。 做第1题时让学生先看图按照图中的内容分别填出相同的加数是几就用几做被乘数有几个相同加数就用几做乘数最后写出乘法算式。 教师...",
+        "uid": "0c850f0b-3b2d-4956-85a4-5358288c44d8"
+      },
+      {
+        "flags": [],
+        "internal_style": "encyclopedia",
+        "main_gap": "全文压缩为单一长段落，未按内容逻辑自然切分，与官方成品常见的多段落叙事节奏不符。",
+        "prompt_fix": "提示模型在精简去噪后，需按“水电规划、地漏与排水、干湿分区、洁具对比、材质选择、施工细节”等语义单元进行合理分段，保持段落间的呼吸感与阅读节奏。",
+        "rewrite_head": "卫生间装修涉及多项细节规划，合理布局与施工能有效提升后期使用体验。水电布置阶段需提前多预留电源插座与水路，以便后续安装智能马桶和电热毛巾架时避免使用不便。地漏位置应慎重选择，最好位于地砖的一侧；若置于卫生间中间，无论砖怎样倾斜，地漏都不会是最低点。卫生间若未实现干湿分离，容易导致淋浴时水花飞溅、人员滑倒，且不利于清洁。一般情况下，淋浴间比浴缸更为实用，不仅使用及时方便，且相对更加卫生。马赛克装饰效果较好，但材料价格和工费都比较贵，且不好打理、容易藏污纳垢，因此应尽量用在干区。墙地砖铺贴前需进行至少24小时的闭水实验...",
+        "scores": {
+          "faithfulness_score": 5,
+          "hallucination_risk_score": 5,
+          "low_template_score": 5,
+          "noise_handling_score": 5,
+          "official_style_closeness_score": 3,
+          "overall_score": 4
+        },
+        "source_head": "6个洗手间装修攻略,打造完美卫生间 洗手间的装修是很多人关心的问题, 所以阿匠叔收集了 6个实用的洗手间装修小贴士, 一起来看看吧~ Part1:预留水电路 卫生间装修时许多人经常忘记多预留电源插座和水路,造成后期改换智能马桶和电热毛巾架就容易导致使用不便。 Part2:地漏和插座 地漏位置需要慎重考虑,最好位于地砖的一边,如果在卫生间中间位置,那么无论砖怎样倾斜地漏都不会是最低点。 Part3:干湿要分离 卫生间干湿不分离容易导致淋浴...",
+        "uid": "f55cb9df-f415-4880-abe1-5475eed69b18"
+      },
+      {
+        "flags": [
+          "keeps_web_noise_unnecessarily"
+        ],
+        "internal_style": "abstract",
+        "main_gap": "未清理原文中的明显OCR乱码与断句错误（如“01985年”“探科耶勒鲁普彗星相遇”及末尾孤立的“65万张照片”），导致信息连贯性受损。",
+        "prompt_fix": "要求模型在改写时主动识别并修正明显的排版/OCR噪声（如多余数字、断裂词组、无主语句），对孤立信息进行合理归并或删减，而非机械保留。",
+        "rewrite_head": "苏联重点聚焦金星探测，“金星7号”于1970年安全着陆金星，成为首个从其他行星表面向地球传送数据的探测器；“金星15号”与“金星16号”绘制了金星表面的雷达探测地图。与此同时，美国太空总署将探测重心转向火星及外层行星。美国发射的“先锋10号”成为首个飞出太阳系的探测器，“先锋11号”于1979年抵达土星。“旅行者1号”于1980年到达土星；一年后，“旅行者2号”掠过土星，并于1986年访问天王星，1989年飞抵海王星，期间发现了围绕海王星的一个环状系统及6颗卫星。欧洲太空局于1985年7月使用“阿里亚娜1号”火箭发...",
+        "scores": {
+          "faithfulness_score": 3,
+          "hallucination_risk_score": 5,
+          "low_template_score": 5,
+          "noise_handling_score": 2,
+          "official_style_closeness_score": 4,
+          "overall_score": 3
+        },
+        "source_head": "历史上各国派出了哪些探测器探寻金星 “金星7号”探测器于1970年安全着陆于金星，并且成为第一个从其他行星表面向地球传送数据的空间探测器。 “金星15号”和“金星16号”绘制了金星表面的雷达探测地图。 就在苏联关注金星探测的同时，美国太空总署则更关注火星以及更外层的行星的探测。 01985年7月欧洲太空局用“阿里亚娜1号”火箭将空间美国太空总署发射的“先锋10号”探测器是首个飞出太阳系的探科耶勒鲁普彗星相遇。 “先锋11号”在1979...",
+        "uid": "44ca54fe-f6b0-4b79-a387-548deaf6f506"
+      },
+      {
+        "flags": [],
+        "internal_style": "abstract",
+        "main_gap": "原文为高度主观的网络情绪化表达，改写虽理顺了逻辑并去除了口语冗余，但未将主观观点转化为更具客观分析或知识密度的表述，教育/学习价值提升有限。",
+        "prompt_fix": "应在提示词中明确要求对主观情绪化内容进行中性化转述或补充逻辑链条，以提升文本的客观性与信息密度，而非仅做同义精简。",
+        "rewrite_head": "在部分女性的认知中，“共情能力”常表现为对异见者的极度不包容，观点相左易被指责为缺乏共情的冷血之人；相比之下，男性之间虽看法各异且会交流，但通常不强求共识。这种差异可能源于思维模式的区分：男性普遍偏向“强者思维”，视彼此为拥有独立经验与方向的个体，因而更强调“理解”而非“共情”，且带有“物化思维”的男性更倾向于从善恶标准与法律法规等抽象概念审视人际互动。女性则多被归为“弱者思维”，需通过共情来确认对方是否会提供保护而非伤害。这种以“是否同类”为标准的判断方式，实质上是一种源于不信任的“虫群式思维”，其强烈渴求的共情...",
+        "scores": {
+          "faithfulness_score": 4,
+          "hallucination_risk_score": 5,
+          "low_template_score": 4,
+          "noise_handling_score": 4,
+          "official_style_closeness_score": 4,
+          "overall_score": 4
+        },
+        "source_head": "反正我周围女性看来“共情能力”恐怕体现在她们对异见人士的极其不包容，我的男生朋友大多对同一件事有不同的态度，有时候会互相交流但无所谓达成共识。但女同胞就不一样了，你要敢不同意她的观点，你就是一个没有共情能力的冷血杀手。我认为可能是因为男性普遍是强者思维，我们看法不同但我们有各自的经验和方向，每个人是独立的个体，而大部分女性是弱者思维，她们需要通过所谓的“共情”来证明你是会保护她的而不是伤害她的人。但世界上只有人会互相伤害，而“物化思维”...",
+        "uid": "533c1940-a72b-4287-adab-5d4e09f96948"
+      },
+      {
+        "flags": [],
+        "internal_style": "blog",
+        "main_gap": "改写过度平滑与中立化，削弱了原文鲜明的个人观点与网络语境下的表达张力，略显去个性化。",
+        "prompt_fix": "提示词需明确‘在梳理逻辑与剔除冗余的同时，保留原文的核心立场、论证锋芒及适度的个性化语感，避免过度学术化或模板化中和观点’。",
+        "rewrite_head": "在部分社交观察中，女性所表现的“共情能力”往往体现为对异见的不包容。男性群体在面对同一事件时通常持有不同态度，彼此交流但并不强求达成共识；而女性群体则倾向于将观点分歧直接等同于缺乏共情，甚至视为冷漠的表现。这种互动差异主要被归因于两种不同的思维倾向。男性普遍偏向强者思维，将每个人视为独立个体，认可各自不同的经验与方向，因此在交往中更强调“理解”而非“共情”，并习惯从善恶标准、法律法规等抽象概念层面处理人际关系。相对而言，女性更偏向弱者思维，倾向于通过“共情”来确认对方是否会保护自己而非造成伤害。这种基于不信任而形成...",
+        "scores": {
+          "faithfulness_score": 4,
+          "hallucination_risk_score": 5,
+          "low_template_score": 5,
+          "noise_handling_score": 4,
+          "official_style_closeness_score": 4,
+          "overall_score": 4
+        },
+        "source_head": "反正我周围女性看来“共情能力”恐怕体现在她们对异见人士的极其不包容，我的男生朋友大多对同一件事有不同的态度，有时候会互相交流但无所谓达成共识。但女同胞就不一样了，你要敢不同意她的观点，你就是一个没有共情能力的冷血杀手。我认为可能是因为男性普遍是强者思维，我们看法不同但我们有各自的经验和方向，每个人是独立的个体，而大部分女性是弱者思维，她们需要通过所谓的“共情”来证明你是会保护她的而不是伤害她的人。但世界上只有人会互相伤害，而“物化思维”...",
+        "uid": "10386858-0a50-4949-83ce-bd84bbce9bb6"
+      },
+      {
+        "flags": [],
+        "internal_style": "encyclopedia",
+        "main_gap": "原文为强主观网络评论，改写虽提炼了逻辑主线，但直接将‘弱者思维’‘虫群式思维’等争议性标签转为客观陈述，未做视角软化或语境标注，导致学术感与原文情绪底色存在割裂。",
+        "prompt_fix": "要求模型在重写时明确区分事实描述与作者观点，使用‘部分观察者指出’‘该论述认为’等引述框架包裹主观断言，并平滑过渡网络口语至书面分析语体。",
+        "rewrite_head": "关于“共情能力”的性别差异，观察表明部分女性在面对异见时表现出较强的不包容倾向，而男性群体通常对同一事件持有不同看法，彼此交流但未必追求共识。当观点不一致时，部分女性倾向于将对方视为缺乏共情能力。该现象被归因于思维模式的差异：男性普遍具有“强者思维”，强调个体独立性与不同经验方向的并存，人际互动中更侧重“理解”；部分女性则具有“弱者思维”，倾向于通过“共情”来确认对方是否会提供保护而非造成伤害。人际伤害仅存在于人与人之间，具备“物化思维”的男性多关注善恶标准与法律法规等抽象概念，而女性更关注个体间的立场相似性。这种...",
+        "scores": {
+          "faithfulness_score": 4,
+          "hallucination_risk_score": 5,
+          "low_template_score": 5,
+          "noise_handling_score": 4,
+          "official_style_closeness_score": 4,
+          "overall_score": 4
+        },
+        "source_head": "反正我周围女性看来“共情能力”恐怕体现在她们对异见人士的极其不包容，我的男生朋友大多对同一件事有不同的态度，有时候会互相交流但无所谓达成共识。但女同胞就不一样了，你要敢不同意她的观点，你就是一个没有共情能力的冷血杀手。我认为可能是因为男性普遍是强者思维，我们看法不同但我们有各自的经验和方向，每个人是独立的个体，而大部分女性是弱者思维，她们需要通过所谓的“共情”来证明你是会保护她的而不是伤害她的人。但世界上只有人会互相伤害，而“物化思维”...",
+        "uid": "6a03ef19-cccc-49b8-9c5d-3495f93ea93d"
+      },
+      {
+        "flags": [],
+        "internal_style": "textbook",
+        "main_gap": "改写成功将情绪化网帖转化为结构清晰的论述段落，但过度中和了原文的尖锐立场与个人化语气，使部分原始语境张力有所流失。",
+        "prompt_fix": "下一版提示词应明确要求在提升逻辑连贯性的同时保留原作者的核心立场与适度语气特征，避免过度学术化或绝对中立化的包装处理。",
+        "rewrite_head": "在人际交往中，“共情能力”的表现常因性别与思维模式的不同而产生差异。部分观察显示，男性群体在面对同一事件时往往持有不同看法，彼此交流但不强求达成共识；而女性群体则可能将观点分歧直接视为缺乏共情或冷漠。这种差异的背后，通常与不同的心理预设有关。男性多偏向“强者思维”，倾向于将彼此视为独立个体，尊重各自的经验与方向，因此在互动中更强调“理解”而非情绪上的“共情”。同时，部分男性习惯运用“物化思维”，更多依据善恶标准、法律法规等抽象概念进行判断。相比之下，女性多偏向“弱者思维”，常将“共情”作为一种测试机制，用以确认对方...",
+        "scores": {
+          "faithfulness_score": 4,
+          "hallucination_risk_score": 5,
+          "low_template_score": 5,
+          "noise_handling_score": 4,
+          "official_style_closeness_score": 4,
+          "overall_score": 4
+        },
+        "source_head": "反正我周围女性看来“共情能力”恐怕体现在她们对异见人士的极其不包容，我的男生朋友大多对同一件事有不同的态度，有时候会互相交流但无所谓达成共识。但女同胞就不一样了，你要敢不同意她的观点，你就是一个没有共情能力的冷血杀手。我认为可能是因为男性普遍是强者思维，我们看法不同但我们有各自的经验和方向，每个人是独立的个体，而大部分女性是弱者思维，她们需要通过所谓的“共情”来证明你是会保护她的而不是伤害她的人。但世界上只有人会互相伤害，而“物化思维”...",
+        "uid": "a87c2e68-09b9-4899-b709-e0a672c9d2a3"
+      },
+      {
+        "flags": [],
+        "internal_style": "encyclopedia",
+        "main_gap": "原文偏重抒情与议论，改写虽去除了夸张修辞，但整体仍保留较强随笔色彩，未完全贴合百科类文本应有的客观陈述语态。",
+        "prompt_fix": "下一版提示词需明确要求将主观抒情与比喻性表达转化为中性客观的陈述句，收敛议论语气，强化事实逻辑衔接，避免文学化词汇残留。",
+        "rewrite_head": "病毒与人类长期共存具有较高的可能性。从生物演化史来看，病毒具备较强的适应性与存续能力，难以像部分珍稀物种一样彻底消失。以新冠病毒为代表的部分病原体，其坚韧性、渗透力、衍生能力与历史渊源均表明，病原体的存续时间可能早于人类，且其演化特征使其能够持续存在。 生物多样性与生态平衡是地球存在的基础。人类活动对自然环境的干预若超出合理范围，将破坏生态平衡并引发自然系统的反噬。此次疫情的发生在一定程度上抑制了人类行为的过度扩张，为地球环境提供了喘息与修正的机会。 维持生态稳定需要人类重新审视与多种生物共处的方式，核心在于人类自...",
+        "scores": {
+          "faithfulness_score": 4,
+          "hallucination_risk_score": 5,
+          "low_template_score": 5,
+          "noise_handling_score": 4,
+          "official_style_closeness_score": 4,
+          "overall_score": 4
+        },
+        "source_head": "(6:生物多样性) 病毒与人类长期共存应是大概率的事件。即使科技发展到逆天，人类变异成仙，病毒依然以适合的方式存在，或隐或显，不大可能像一些珍稀动物被惨遭灭绝，这从我们已知的人类与大自然的演化史可以找到有力的佐证。有些病原体，比如新冠，它的坚韧性、渗透性以及衍生力和狡猾性并不逊色于人类，它的历史比人类甚至更悠久。 生物的多样性和生态的基本平衡是地球存在的基础，如同世界是多边的而不是单极的。而人类的自私、霸道和贪婪正日益破坏这一平衡，如此...",
+        "uid": "b8b0e8b6-a9e2-4f2f-9e4a-833788744e5f"
+      },
+      {
+        "flags": [],
+        "internal_style": "textbook",
+        "main_gap": "使用了“在概念界定上”“在方法论与应用层面”等显式结构过渡词，略显报告化，削弱了学术散文的自然连贯感。",
+        "prompt_fix": "下一版提示词应明确要求去除显式的小标题式或板块式过渡语，改用隐性逻辑衔接，使行文更贴近自然学术论述而非结构化摘要。",
+        "rewrite_head": "本书以科学发展观为核心，系统梳理了中国七千年传统文化思想、马克思主义哲学以及现代科学技术发展理论，并结合党的十七大精神，为新时代政治、经济、社会、文化与生态文明五位一体建设提供对策。在概念界定上，本书将哲学明确为一门研究自然界与人类社会事物变化发展规律的科学，强调理论必须回应现实问题。 这一理论建构的背景源于日益严峻的生态危机。早在20世纪60年代，生态学家已发出警告，但当时的经济学家多忽视经济增长对环境与生物进化的破坏，哲学家也因专注于理论模型与特定领域，对生态环境恶化缺乏关注，导致哲学研究与实际严重脱节。为弥补...",
+        "scores": {
+          "faithfulness_score": 5,
+          "hallucination_risk_score": 5,
+          "low_template_score": 4,
+          "noise_handling_score": 5,
+          "official_style_closeness_score": 4,
+          "overall_score": 4
+        },
+        "source_head": "本书系统地论述了中国七千年的传统文化思想、马克思主义哲学和现代科学技术发展理论成就中的科学发展观哲学思想，并联系到党的十七大精神，提出了一系列科学发展新时代的政治、经济、社会、文化、生态文明五位一体建设中的对策与措施。本书内容观点鲜明，立意新颖，理论系统性强。可供学界、理论界、爱好者参考。地球上已经出现了不可忽视的生态危机，早在20世纪60年代生态学家就提出了生态危机已经萌芽的警告，但全世界的经济学家置若罔闻，忽视经济发展对环境和生物进...",
+        "uid": "64883be2-73a6-44af-9255-2b8cb1b1752b"
+      }
+    ],
+    "top_actionable_prompt_fix": [
+      {
+        "count": 1,
+        "fix": "建议在提示词中明确技术类文本应优先采用紧凑段落结构，严格压缩冗余修饰语，并确保专业术语与公约名称的绝对准确。"
+      },
+      {
+        "count": 1,
+        "fix": "在后续提示词中明确：当原文信息密度较低时，允许通过补充同类作业场景、安全规范背景或设备原理说明来自然延展篇幅，但严禁虚构数据或脱离原文语境添加无关内容。"
+      },
+      {
+        "count": 1,
+        "fix": "要求模型在忠实原文的前提下，主动优化长难句的逻辑切分，补充必要的因果/递进衔接，使专业内容的叙述更符合自然科普行文的流畅度与信息密度。"
+      },
+      {
+        "count": 1,
+        "fix": "维持当前高保真与去冗余策略，后续生成时注意在信息密集处合理划分段落，避免过度压缩导致阅读节奏单一。"
+      },
+      {
+        "count": 1,
+        "fix": "建议在保持无标题、无列表的纯文本风格前提下，允许按内容逻辑（如先引诗后述人）进行合理分段，并添加简短过渡词以提升行文流畅度。"
+      },
+      {
+        "count": 1,
+        "fix": "移除所有引导性、总结性元话语，直接以平实连贯的段落将诗歌文本与作者生平、文学成就有机融合，保持客观陈述语气即可。"
+      },
+      {
+        "count": 1,
+        "fix": "提示词应明确允许根据内容属性（如诗文引用、生平履历、文学评价）进行合理分段，避免过度追求单一结构而导致信息堆砌与阅读节奏断裂。"
+      },
+      {
+        "count": 1,
+        "fix": "维持当前去标题化与连贯叙事策略，后续可补充‘长传记类内容建议按时间或主题自然分段’的提示以优化视觉节奏。"
+      },
+      {
+        "count": 1,
+        "fix": "在保持信息精炼与结构连贯的同时，提示模型适当保留教育反思类文本的叙事节奏与适度人文温度，避免转化为冷峻的纯客观报告。"
+      },
+      {
+        "count": 1,
+        "fix": "要求以自然叙述视角重写，保留原文的情感脉络与课堂细节，避免使用“活动分为…环节”“建议…”等说明书式句式，增强段落间的流畅过渡与反思性表达。"
+      },
+      {
+        "count": 1,
+        "fix": "若需保留教育叙事特质，可在提示词中明确‘保持第一人称视角与教学反思的情感温度’；若以客观精炼为主，当前改写已完全符合官方多风格成品标准。"
+      },
+      {
+        "count": 1,
+        "fix": "提示词应明确要求保留原文的人文叙事基调，采用连贯的散文式表达替代摘要式罗列，避免过度使用公文或报告语态。"
+      },
+      {
+        "count": 1,
+        "fix": "建议在指令中明确保留原文所有客观数据与核心特征，适度重组句式以提升连贯性，避免为追求简洁而过度删减非冗余的描述性内容。"
+      },
+      {
+        "count": 1,
+        "fix": "当前指令已能稳定引导模型清洗网页碎片并输出连贯正文；建议在系统提示中补充‘对汽车/机械类文本，在保留原参数基础上可用一句客观陈述补充核心系统的工作原理或典型工况’，以自然提升技术类内容的信息密度。"
+      },
+      {
+        "count": 1,
+        "fix": "在生成指令中补充“建议按外观描述与动力参数等逻辑层次自然分段，提升阅读呼吸感”即可。"
+      },
+      {
+        "count": 1,
+        "fix": "维持当前客观精炼的叙述节奏，后续处理同类资讯时可直接沿用此结构，无需额外调整。"
+      },
+      {
+        "count": 1,
+        "fix": "提示词应要求保留原文中的具体出处与背景细节，并通过合理的逻辑衔接自然扩充篇幅，避免过度精简导致长度偏离官方样本的中位数区间。"
+      },
+      {
+        "count": 1,
+        "fix": "提示词应强调保留原文的情感基调与收尾结构，避免过度书面化导致文本失去可读性与连贯性，鼓励在严谨基础上保持自然流畅的科普叙述风格。"
+      },
+      {
+        "count": 1,
+        "fix": "建议在提示词中增加‘若原文信息较简略，可在不新增事实的前提下适当补充逻辑过渡或背景说明，避免过度压缩导致成文过短’的要求。"
+      },
+      {
+        "count": 1,
+        "fix": "保持当前对网络噪声的清洗与逻辑重组策略，后续可针对同类短科普文本强调‘适度展开背景衔接’以避免行文过紧。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+# 英文 QA 封板生产配置 · prompt=en_v1(hardened) · closeness 3.76 / 忠实 5.0
+llm:
+  base_url: "http://127.0.0.1:8003/v1"   # 5090 本地 vLLM；served id 实为 Qwen3.6-27B 推理模型
+  base_url_env: "REWRITE_BASE_URL"
+  api_key_env: "REWRITE_API_KEY"
+  synth_model: "qwen-math-classifier"
+  judge_model: "qwen-math-classifier"
+  extra_headers: {}
+  extra_body:                             # 关思维链；须配合修复版 common.py(读 extra_body)才生效
+    chat_template_kwargs:
+      enable_thinking: false
+  temperature: 0.7
+  judge_temperature: 0.0
+  max_tokens: 3072                        # max_model_len=8192 限制
+  request_timeout: 600
+  max_retries: 3
+
+seed:
+  source: "local"
+  local_path: "data/seeds/<你的en种子>.jsonl"
+  language: "en"
+  n_docs: 500
+  min_chars: 500
+  max_chars: 8000
+
+synthesis:
+  do_qa: true
+  do_rewrite: false
+  qa_min_pairs: 3
+  qa_max_pairs: 8
+  concurrency: 16
+
+paths:
+  prompt_dir: "prompts"
+  qa_prompt_en: "prompts/qa_gen_en_v1__EN_QA_SEALED.txt"
+  rewrite_prompt_en: "prompts/rewrite_styles_v3_7_en__EN_REWRITE_SEALED.yaml"  # synthesize 无条件加载 qa+rewrite 两者，即使 do_rewrite=false 也需此行
+  out_dir: "outputs/en_qa_prod"
+  eval_dir: "data/eval/en_qa_prod"

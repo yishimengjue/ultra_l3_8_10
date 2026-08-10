@@ -1,0 +1,41 @@
+llm:
+  base_url: http://127.0.0.1:8003/v1
+  base_url_env: REWRITE_BASE_URL
+  api_key_env: REWRITE_API_KEY
+  synth_model: qwen-math-classifier
+  judge_model: qwen-math-classifier
+  extra_headers: {}
+  extra_body:
+    chat_template_kwargs:
+      enable_thinking: false
+  temperature: 0.7
+  judge_temperature: 0.0
+  max_tokens: 3072
+  request_timeout: 600
+  max_retries: 3
+seed:
+  source: local
+  local_path: data/seeds/en_ultrafineweb_l2_seed_n250_content.jsonl
+  language: en
+  n_docs: 200
+  min_chars: 500
+  max_chars: 8000
+synthesis:
+  do_qa: false
+  do_rewrite: true
+  rewrite_styles:
+  - encyclopedia
+  - textbook
+  - blog
+  - abstract
+  qa_min_pairs: 3
+  qa_max_pairs: 8
+  concurrency: 8
+paths:
+  prompt_dir: src/prompts
+  qa_prompt_zh: src/prompts/qa_gen_v3_25_zh.txt
+  rewrite_prompt_zh: src/prompts/rewrite_styles_v4_3_5_v5090_zh.yaml
+  qa_prompt_en: src/prompts/qa_gen_v1_1_en.txt
+  rewrite_prompt_en: src/prompts/rewrite_styles_v3_7_en.yaml
+  out_dir: outputs/en_thru200_c8
+  eval_dir: data/eval/en_v5090

@@ -1,0 +1,38 @@
+# 英文 rewrite 封板生产配置 · prompt=v3.7 · 忠实 5.0 / overall 4.98 / 人工 4.99(198/200 pass)
+# 注：en rewrite 历史用阿里云强模型跑；若换 5090 本地推理模型，务必用修复版 common.py(关思维链)
+llm:
+  base_url: "http://127.0.0.1:8003/v1"   # 5090 本地 vLLM；served id 实为 Qwen3.6-27B 推理模型
+  base_url_env: "REWRITE_BASE_URL"
+  api_key_env: "REWRITE_API_KEY"
+  synth_model: "qwen-math-classifier"
+  judge_model: "qwen-math-classifier"
+  extra_headers: {}
+  extra_body:                             # 关思维链；须配合修复版 common.py(读 extra_body)才生效
+    chat_template_kwargs:
+      enable_thinking: false
+  temperature: 0.7
+  judge_temperature: 0.0
+  max_tokens: 3072
+  request_timeout: 600
+  max_retries: 3
+
+seed:
+  source: "local"
+  local_path: "data/seeds/<你的en种子>.jsonl"
+  language: "en"
+  n_docs: 500
+  min_chars: 500
+  max_chars: 8000
+
+synthesis:
+  do_qa: false
+  do_rewrite: true
+  rewrite_styles: ["encyclopedia", "textbook", "blog", "abstract"]
+  concurrency: 8                          # en rewrite 5090 甜点(10.33篇/min,1.67×)
+
+paths:
+  prompt_dir: "prompts"
+  qa_prompt_en: "prompts/qa_gen_en_v1__EN_QA_SEALED.txt"  # synthesize 无条件加载 qa+rewrite 两者，即使 do_qa=false 也需此行
+  rewrite_prompt_en: "prompts/rewrite_styles_v3_7_en__EN_REWRITE_SEALED.yaml"
+  out_dir: "outputs/en_rewrite_prod"
+  eval_dir: "data/eval/en_rewrite_prod"

@@ -1,0 +1,37 @@
+# 中文 rewrite 封板生产配置 · prompt=v4.3.5-v5090 · style_closeness 4.62 / 忠实 4.87 / 并发8最优(13.6篇/min)
+llm:
+  base_url: "http://127.0.0.1:8003/v1"   # 5090 本地 vLLM；served id 实为 Qwen3.6-27B 推理模型
+  base_url_env: "REWRITE_BASE_URL"
+  api_key_env: "REWRITE_API_KEY"
+  synth_model: "qwen-math-classifier"
+  judge_model: "qwen-math-classifier"
+  extra_headers: {}
+  extra_body:                             # 关思维链；须配合修复版 common.py(读 extra_body)才生效
+    chat_template_kwargs:
+      enable_thinking: false
+  temperature: 0.7
+  judge_temperature: 0.0
+  max_tokens: 3072
+  request_timeout: 600
+  max_retries: 3
+
+seed:
+  source: "local"
+  local_path: "data/seeds/<你的zh种子>.jsonl"
+  language: "zh"
+  n_docs: 500
+  min_chars: 500
+  max_chars: 8000
+
+synthesis:
+  do_qa: false
+  do_rewrite: true
+  rewrite_styles: ["encyclopedia", "textbook", "blog", "abstract"]
+  concurrency: 8                          # rewrite 线 5090 甜点(13.6篇/min,1.94×)
+
+paths:
+  prompt_dir: "prompts"
+  qa_prompt_zh: "prompts/qa_gen_v3_30_forcetype_zh__ZH_QA_SEALED.txt"  # synthesize 无条件加载 qa+rewrite 两者，即使 do_qa=false 也需此行
+  rewrite_prompt_zh: "prompts/rewrite_styles_v4_3_5_v5090_zh__ZH_REWRITE_SEALED.yaml"
+  out_dir: "outputs/zh_rewrite_prod"
+  eval_dir: "data/eval/zh_rewrite_prod"

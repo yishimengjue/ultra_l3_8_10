@@ -1,0 +1,177 @@
+{
+  "boolean_counts": {
+    "local_noise_question": 0,
+    "local_omits_official_focus": 49,
+    "local_over_explains": 31,
+    "local_too_textbook_like": 3,
+    "local_too_verbose": 10
+  },
+  "closeness_score_means": {
+    "answer_style_similarity": 3.8,
+    "focus_similarity": 3.9,
+    "official_closeness_score": 3.76,
+    "pair_count_similarity": 4.13,
+    "question_style_similarity": 3.88
+  },
+  "failure": 0,
+  "failure_samples": [],
+  "inputs": {
+    "local_records_path": "data/eval/en/baseline_qa_en_v1_hardened_records.jsonl",
+    "official_path": "data/eval/en/pair_eval_100.jsonl",
+    "official_reference_anchor_count": 24,
+    "official_reference_path": "data/eval/en/official_qa_reference_anchors.json"
+  },
+  "judge_model": "qwen3.6-35b-a3b",
+  "official_closeness_score_distribution": {
+    "2": 2,
+    "3": 23,
+    "4": 72,
+    "5": 3
+  },
+  "outputs": {
+    "jsonl_path": "data/eval/en/eval_l1_pairwise_qa_en_v1_hardened.jsonl",
+    "summary_json_path": "data/eval/en/eval_l1_pairwise_qa_en_v1_hardened_summary.json",
+    "summary_markdown_path": "data/eval/en/eval_l1_pairwise_qa_en_v1_hardened_summary.md"
+  },
+  "quality_score_means": {
+    "answerability_score": 5.0,
+    "coverage_score": 3.98,
+    "faithfulness_score": 5.0,
+    "hallucination_risk_score": 5.0,
+    "self_containment_score": 4.99
+  },
+  "score_summary": {
+    "answer_style_similarity": {
+      "distribution": {
+        "2": 2,
+        "3": 25,
+        "4": 64,
+        "5": 9
+      },
+      "mean": 3.8,
+      "median": 4.0
+    },
+    "answerability_score": {
+      "distribution": {
+        "5": 100
+      },
+      "mean": 5.0,
+      "median": 5.0
+    },
+    "coverage_score": {
+      "distribution": {
+        "3": 9,
+        "4": 84,
+        "5": 7
+      },
+      "mean": 3.98,
+      "median": 4.0
+    },
+    "faithfulness_score": {
+      "distribution": {
+        "5": 100
+      },
+      "mean": 5.0,
+      "median": 5.0
+    },
+    "focus_similarity": {
+      "distribution": {
+        "2": 2,
+        "3": 15,
+        "4": 74,
+        "5": 9
+      },
+      "mean": 3.9,
+      "median": 4.0
+    },
+    "hallucination_risk_score": {
+      "distribution": {
+        "5": 100
+      },
+      "mean": 5.0,
+      "median": 5.0
+    },
+    "official_closeness_score": {
+      "distribution": {
+        "2": 2,
+        "3": 23,
+        "4": 72,
+        "5": 3
+      },
+      "mean": 3.76,
+      "median": 4.0
+    },
+    "pair_count_similarity": {
+      "distribution": {
+        "2": 3,
+        "3": 13,
+        "4": 52,
+        "5": 32
+      },
+      "mean": 4.13,
+      "median": 4.0
+    },
+    "question_style_similarity": {
+      "distribution": {
+        "2": 2,
+        "3": 14,
+        "4": 78,
+        "5": 6
+      },
+      "mean": 3.88,
+      "median": 4.0
+    },
+    "self_containment_score": {
+      "distribution": {
+        "4": 1,
+        "5": 99
+      },
+      "mean": 4.99,
+      "median": 5.0
+    }
+  },
+  "success": 100,
+  "top_actionable_prompt_fix": [
+    {
+      "count": 1,
+      "fix": "Prioritize conceptual and comparative questions over procedural steps to strictly align with the official focus distribution, while retaining the effective T/F and MC formats."
+    },
+    {
+      "count": 1,
+      "fix": "Generate two additional pairs using True/False or multiple-choice formats to explore causal relationships and comparative dynamics, matching the official pair count and distribution."
+    },
+    {
+      "count": 1,
+      "fix": "Instruct the generator to explicitly include questions on program adaptability and pricing/metadata to match the official distribution."
+    },
+    {
+      "count": 1,
+      "fix": "Incorporate True/False premise checks, multiple-choice formats for enumerated lists, and questions targeting specific textual analogies to better mirror the official question distribution."
+    },
+    {
+      "count": 1,
+      "fix": "Instruct the generator to produce exactly 8 pairs per document and explicitly include at least one 'which of the following is NOT' multiple-choice question to mirror the official distribution."
+    },
+    {
+      "count": 1,
+      "fix": "Generate exactly 8 pairs per seed, prioritize concise direct answers, and include a balanced mix of factual, true/false, and multiple-choice questions."
+    },
+    {
+      "count": 1,
+      "fix": "Instruct the model to keep answers extremely concise, stating only the direct fact or selected option without adding causal explanations or restating context."
+    },
+    {
+      "count": 1,
+      "fix": "Instruct the model to output only the direct factual answer without meta-commentary like 'as explicitly stated in the text,' matching the concise style of the official references."
+    },
+    {
+      "count": 1,
+      "fix": "Reformat questions to direct natural language without multiple-choice or true/false structures, and strip explanatory follow-ups from answers to match the official's concise style."
+    },
+    {
+      "count": 1,
+      "fix": "Instruct the model to keep answers strictly concise and direct, avoiding restating the question or adding explanatory clauses unless necessary for clarity."
+    }
+  ],
+  "total": 100
+}

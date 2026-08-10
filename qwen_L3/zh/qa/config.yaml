@@ -1,0 +1,44 @@
+# ---- LLM 接入（OpenAI 兼容；走阿里云百炼 compatible-mode）----
+llm:
+  base_url: "https://ws-cgp2wo6lqvvem1sy.cn-beijing.maas.aliyuncs.com/compatible-mode/v1"
+  api_key_env: "DASHSCOPE_API_KEY"
+  synth_model: "qwen3.6-27b"   # 由 QA v3.25 三模型对比（n=50）选定：30b 落后（配对 t=3.7/4.3），27b≈35b 但更省，人工复核确认；原论文基线为 qwen3-30b-a3b-instruct-2507
+  judge_model: "qwen3.6-35b-a3b"   # 评测层对齐未来 5090 可本地部署模型；合成模型不变
+  extra_headers:                              # 兼容端点可选归因头，可留空
+    HTTP-Referer: ""
+    X-Title: "ultra-fineweb-l3-repro"
+  temperature: 0.7        # 合成用较高温以增多样性
+  judge_temperature: 0.0  # 裁判用 0 以求稳定
+  max_tokens: 8192
+  request_timeout: 120
+  max_retries: 3
+
+# ---- 种子数据（L2 Ultra-FineWeb 切片）----
+seed:
+  source: "local"                  # "hf" 流式拉取；或 "local"
+  hf_dataset: "openbmb/Ultra-FineWeb"
+  hf_split: "train"
+  local_path: "data/seeds/zh_rewrite_core_clean_seed_docs_n500_soft_rules_low.jsonl"  # source=local 时指向一个 jsonl（每行含 _source_text/content）；随包默认种子
+  language: "zh"                   # en / zh
+  n_docs: 500                      # 先 20 跑通，再 100 调优，再放大
+  min_chars: 500                   # 过滤过短文档
+  max_chars: 8000                  # 过长截断，控推理成本
+
+# ---- 合成 ----
+synthesis:
+  do_qa: true                      # 本包只做 QA 精炼层
+  do_rewrite: false
+  rewrite_styles: ["encyclopedia", "textbook", "blog", "abstract"]
+  qa_min_pairs: 3
+  qa_max_pairs: 8
+  concurrency: 4                   # 并发线程数；n=200 生产切片实测即此值（有效并行度≈3.96、success 100%、零重试）。端点偶发多分钟卡顿属已知现象，如遇限速再下调
+
+# ---- 路径 ----
+paths:
+  prompt_dir: "src/prompts"
+  qa_prompt_zh: "src/prompts/qa_gen_v3_30_forcetype_zh.txt"
+  rewrite_prompt_zh: "src/prompts/rewrite_styles_v4_3_5_zh.yaml"
+  qa_prompt_en: "src/prompts/qa_gen_v1_1_en.txt"
+  rewrite_prompt_en: "src/prompts/rewrite_styles_v2_en.yaml"
+  out_dir: "outputs/qa_v3_25_qwen3_6_27b_prod"
+  eval_dir: "data/eval"

@@ -1,0 +1,355 @@
+{
+  "boolean_counts": {
+    "adds_unseen_facts": 0,
+    "drops_key_information": 1,
+    "internal_style_leak": 0,
+    "keeps_web_noise": 0,
+    "qa_marker_leak": 0,
+    "too_conversational_or_clickbait": 0,
+    "too_generic_or_summary_like": 0,
+    "too_markdown_or_template": 0,
+    "unsupported_numeric_change": 0
+  },
+  "by_internal_style": {
+    "abstract": {
+      "faithfulness_score_mean": 5.0,
+      "flag_counts": {
+        "adds_unseen_facts": 0,
+        "drops_key_information": 0,
+        "internal_style_leak": 0,
+        "keeps_web_noise": 0,
+        "qa_marker_leak": 0,
+        "too_conversational_or_clickbait": 0,
+        "too_generic_or_summary_like": 0,
+        "too_markdown_or_template": 0,
+        "unsupported_numeric_change": 0
+      },
+      "n": 50,
+      "overall_score_mean": 5.0,
+      "style_strategy_fit_score_mean": 5.0
+    },
+    "blog": {
+      "faithfulness_score_mean": 5.0,
+      "flag_counts": {
+        "adds_unseen_facts": 0,
+        "drops_key_information": 0,
+        "internal_style_leak": 0,
+        "keeps_web_noise": 0,
+        "qa_marker_leak": 0,
+        "too_conversational_or_clickbait": 0,
+        "too_generic_or_summary_like": 0,
+        "too_markdown_or_template": 0,
+        "unsupported_numeric_change": 0
+      },
+      "n": 50,
+      "overall_score_mean": 5.0,
+      "style_strategy_fit_score_mean": 4.88
+    },
+    "encyclopedia": {
+      "faithfulness_score_mean": 4.98,
+      "flag_counts": {
+        "adds_unseen_facts": 0,
+        "drops_key_information": 0,
+        "internal_style_leak": 0,
+        "keeps_web_noise": 0,
+        "qa_marker_leak": 0,
+        "too_conversational_or_clickbait": 0,
+        "too_generic_or_summary_like": 0,
+        "too_markdown_or_template": 0,
+        "unsupported_numeric_change": 0
+      },
+      "n": 50,
+      "overall_score_mean": 4.98,
+      "style_strategy_fit_score_mean": 4.98
+    },
+    "textbook": {
+      "faithfulness_score_mean": 5.0,
+      "flag_counts": {
+        "adds_unseen_facts": 0,
+        "drops_key_information": 1,
+        "internal_style_leak": 0,
+        "keeps_web_noise": 0,
+        "qa_marker_leak": 0,
+        "too_conversational_or_clickbait": 0,
+        "too_generic_or_summary_like": 0,
+        "too_markdown_or_template": 0,
+        "unsupported_numeric_change": 0
+      },
+      "n": 50,
+      "overall_score_mean": 4.94,
+      "style_strategy_fit_score_mean": 4.92
+    }
+  },
+  "failure": 0,
+  "failure_samples": [],
+  "inputs": {
+    "generated_at": "2026-08-03T10:04:45+00:00",
+    "input": "outputs/en_rewrite_v3_7_l1_n50_enfilter3_2026-08-03/multi_style_full.jsonl",
+    "judge_model": "qwen3.6-35b-a3b",
+    "judged_rows": 200,
+    "max_rewrite_chars": 4000,
+    "max_source_chars": 6000,
+    "out_dir": "outputs/en_rewrite_v3_7_l1_n50_enfilter3_2026-08-03",
+    "started_at": "2026-08-03T09:50:26+00:00"
+  },
+  "judge_consistency_warning_counts": {},
+  "judge_performance_summary": {
+    "api_attempts": 200,
+    "api_attempts_per_100_judge": 100.0,
+    "avg_tokens_per_judge": 3684.025,
+    "completion_tokens": 441330,
+    "prompt_tokens": 295475,
+    "request_elapsed_seconds_max": 27.3613,
+    "request_elapsed_seconds_mean": 17.1108,
+    "request_elapsed_seconds_min": 11.3515,
+    "rows_with_perf": 200,
+    "token_usage_available_rows": 200,
+    "token_usage_missing_rows": 0,
+    "tokens_per_100_judge": 368402.5,
+    "total_tokens": 736805
+  },
+  "length_summary": {
+    "by_internal_style": {
+      "abstract": {
+        "content_length": {
+          "max": 3517,
+          "mean": 1358.74,
+          "median": 1260.5,
+          "min": 417,
+          "n": 50,
+          "p90": 2120.0
+        },
+        "content_over_source_ratio_mean": 0.7232
+      },
+      "blog": {
+        "content_length": {
+          "max": 4580,
+          "mean": 1927.6,
+          "median": 1807.5,
+          "min": 495,
+          "n": 50,
+          "p90": 3400.5
+        },
+        "content_over_source_ratio_mean": 0.9978
+      },
+      "encyclopedia": {
+        "content_length": {
+          "max": 4225,
+          "mean": 1589.1,
+          "median": 1467.0,
+          "min": 467,
+          "n": 50,
+          "p90": 2905.9
+        },
+        "content_over_source_ratio_mean": 0.815
+      },
+      "textbook": {
+        "content_length": {
+          "max": 4837,
+          "mean": 1803.22,
+          "median": 1548.0,
+          "min": 553,
+          "n": 50,
+          "p90": 3084.4
+        },
+        "content_over_source_ratio_mean": 0.9075
+      }
+    },
+    "content_length": {
+      "max": 4837,
+      "mean": 1669.665,
+      "median": 1475.5,
+      "min": 417,
+      "n": 200,
+      "p90": 2942.6
+    },
+    "content_over_source_ratio_mean": 0.8609,
+    "note": "Length is a reference signal, not a pass/fail gate. Faithful rewrites of short seeds are legitimately short; compare content_over_source_ratio, not raw length, against the official en anchor.",
+    "official_en_content_len_mean_reference": 3105,
+    "official_en_content_len_median_reference": 2583,
+    "source_length": {
+      "max": 7282,
+      "mean": 2204.26,
+      "median": 1653.0,
+      "min": 535,
+      "n": 200,
+      "p90": 4210.8
+    }
+  },
+  "low_score_samples": [
+    {
+      "faithfulness_score": 4,
+      "flags": [],
+      "internal_style": "encyclopedia",
+      "main_gap": "The rewrite incorrectly merges two independent source entries by attributing the reference to slides 65-90 to the SNF workshop instead of keeping them as separate lessons.",
+      "overall_score": 4,
+      "prompt_fix": "Keep the slide reference and the SNF workshop as distinct statements to preserve the original item boundaries and relationships.",
+      "rewrite_head": "The instructional materials comprise a series of modules covering data management, computational modeling, and bias assessment within neuroscience and healthcare applications. Several lessons focus on the EBRAINS ecosystem, detailing the or",
+      "uid": "87b02d87-2741-4b34-9de1-d084478a9db5"
+    },
+    {
+      "faithfulness_score": 5,
+      "flags": [],
+      "internal_style": "textbook",
+      "main_gap": "No major issue found.",
+      "overall_score": 4,
+      "prompt_fix": "No prompt change needed.",
+      "rewrite_head": "In technology-led Formula One, driver performance is determined by the competitiveness of the car. This review examines the engineering factors that allow a car to maintain a competitive pace during qualifying and race sessions. Despite the",
+      "uid": "0b9d739b-1357-4b37-a890-d36999d4c9ac"
+    },
+    {
+      "faithfulness_score": 5,
+      "flags": [
+        "drops_key_information"
+      ],
+      "internal_style": "textbook",
+      "main_gap": "The output abruptly truncates mid-sentence during the transition between the first and second principles, disrupting readability and omitting the middle portion of the text.",
+      "overall_score": 4,
+      "prompt_fix": "Regenerate the complete text ensuring no mid-sentence truncation occurs, particularly when transitioning between the discussion of consistency and neural linkage.",
+      "rewrite_head": "Consciousness represents the relationship between mind and body and the origin of subjective experience. While the brain's complexity and the private nature of first-person awareness remain scientifically challenging, the past 25 years have",
+      "uid": "257c4b26-ff80-4dcd-a298-3da0e0be67aa"
+    },
+    {
+      "faithfulness_score": 5,
+      "flags": [],
+      "internal_style": "textbook",
+      "main_gap": "The rewrite closely mirrors the source with only minor sentence reordering and synonym substitution, providing limited stylistic refinement despite the textbook directive.",
+      "overall_score": 4,
+      "prompt_fix": "Request a more structured, formally toned presentation that explicitly categorizes mechanisms, indications, and clinical benefits to better align with a textbook format.",
+      "rewrite_head": "Snail mucin, also known as snail secretion filtrate, is a popular ingredient in skincare products. It contains a range of beneficial compounds, including glycoproteins, hyaluronic acid, and glycolic acid. These components work together to s",
+      "uid": "fa1741ef-d78b-40e9-8044-fefc99f88cc2"
+    },
+    {
+      "faithfulness_score": 5,
+      "flags": [],
+      "internal_style": "abstract",
+      "main_gap": "No major issue found.",
+      "overall_score": 5,
+      "prompt_fix": "No prompt change needed.",
+      "rewrite_head": "The online exhibition “Agency,” organized for Broto’s Art-Climate-Science annual conference, features the EPA’s Multispecies Care Survey alongside works by international artists exploring climate and environmental justice. The conference pr",
+      "uid": "026ea88b-98fd-4d2f-8411-f58bb5ca6503"
+    },
+    {
+      "faithfulness_score": 5,
+      "flags": [],
+      "internal_style": "textbook",
+      "main_gap": "No major issue found.",
+      "overall_score": 5,
+      "prompt_fix": "No prompt change needed.",
+      "rewrite_head": "The Bulletin 1411 Current Transformers (CTs) are low-voltage transformers designed for use with various power measurement devices and applications, including protective relays, analog devices, transducers, and PowerMonitor™ products. These ",
+      "uid": "02fa4632-7df6-44d9-a531-98559508aef0"
+    },
+    {
+      "faithfulness_score": 5,
+      "flags": [],
+      "internal_style": "encyclopedia",
+      "main_gap": "No major issue found.",
+      "overall_score": 5,
+      "prompt_fix": "No prompt change needed.",
+      "rewrite_head": "The Empire Marketing Board (EMB) was established by the British government in 1926 to stimulate the imperial economy and encourage solidarity within the Britannic world. Operating until it was wound up in 1933, the EMB functioned as an inst",
+      "uid": "03ce2f1a-c78a-42b6-b3a5-bf68c194602b"
+    },
+    {
+      "faithfulness_score": 5,
+      "flags": [],
+      "internal_style": "abstract",
+      "main_gap": "No major issue found.",
+      "overall_score": 5,
+      "prompt_fix": "No prompt change needed.",
+      "rewrite_head": "Designed for a one-semester course and developed by educators in Hawai‘i schools, this revised edition of Hawaii: Our Island State covers the recorded history of the Hawaiian Kingdom from Western contact in 1778 to its annexation by the Uni",
+      "uid": "06f82334-58cb-4716-b89f-0ae568924761"
+    },
+    {
+      "faithfulness_score": 5,
+      "flags": [],
+      "internal_style": "textbook",
+      "main_gap": "No major issue found.",
+      "overall_score": 5,
+      "prompt_fix": "No prompt change needed.",
+      "rewrite_head": "Daily brushing and flossing, regular dental appointments, and limiting sugar intake to mealtimes are essential for maintaining a healthy smile and reducing the risk of tooth decay. Beyond these routine practices, specific vitamins and miner",
+      "uid": "0924de7b-3d06-4a07-91da-5c12e45479fc"
+    },
+    {
+      "faithfulness_score": 5,
+      "flags": [],
+      "internal_style": "abstract",
+      "main_gap": "No major issue found.",
+      "overall_score": 5,
+      "prompt_fix": "No prompt change needed.",
+      "rewrite_head": "The KQ2T 10mm x 12mm Reducing Tee Pneumatic Air Push In One Touch Quick Fitting is a compact, lightweight plastic connector supplied in a set of 10 pieces. Designed for general-purpose applications across various user environments, it conne",
+      "uid": "0a2fdb42-f7c8-424a-ac36-4d3cdab2b305"
+    }
+  ],
+  "outputs": {
+    "jsonl": "outputs/en_rewrite_v3_7_l1_n50_enfilter3_2026-08-03/l1_rewrite_en_quality.jsonl",
+    "summary_json": "outputs/en_rewrite_v3_7_l1_n50_enfilter3_2026-08-03/l1_rewrite_en_quality_summary.json",
+    "summary_md": "outputs/en_rewrite_v3_7_l1_n50_enfilter3_2026-08-03/l1_rewrite_en_quality_summary.md"
+  },
+  "score_summary": {
+    "faithfulness_score": {
+      "distribution": {
+        "4": 1,
+        "5": 199
+      },
+      "mean": 4.995,
+      "median": 5.0
+    },
+    "information_retention_score": {
+      "distribution": {
+        "4": 2,
+        "5": 198
+      },
+      "mean": 4.99,
+      "median": 5.0
+    },
+    "low_template_score": {
+      "distribution": {
+        "4": 1,
+        "5": 199
+      },
+      "mean": 4.995,
+      "median": 5.0
+    },
+    "natural_english_score": {
+      "distribution": {
+        "4": 2,
+        "5": 198
+      },
+      "mean": 4.99,
+      "median": 5.0
+    },
+    "noise_handling_score": {
+      "distribution": {
+        "5": 200
+      },
+      "mean": 5.0,
+      "median": 5.0
+    },
+    "overall_score": {
+      "distribution": {
+        "4": 4,
+        "5": 196
+      },
+      "mean": 4.98,
+      "median": 5.0
+    },
+    "refinement_value_score": {
+      "distribution": {
+        "4": 10,
+        "5": 190
+      },
+      "mean": 4.95,
+      "median": 5.0
+    },
+    "style_strategy_fit_score": {
+      "distribution": {
+        "4": 11,
+        "5": 189
+      },
+      "mean": 4.945,
+      "median": 5.0
+    }
+  },
+  "success": 200,
+  "total": 200
+}

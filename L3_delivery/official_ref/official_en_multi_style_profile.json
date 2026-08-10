@@ -1,0 +1,573 @@
+{
+  "content_length_distribution": {
+    "max": 8235,
+    "mean": 3105.09,
+    "median": 2583.0,
+    "min": 541,
+    "p25": 1298.5,
+    "p5": 777.9,
+    "p50": 2583.0,
+    "p75": 4360.0,
+    "p90": 6400.0,
+    "p95": 6742.3
+  },
+  "content_word_count_distribution": {
+    "max": 1134,
+    "mean": 456.05,
+    "median": 378.0,
+    "min": 84,
+    "p25": 187.5,
+    "p5": 113.95,
+    "p50": 378.0,
+    "p75": 659.25,
+    "p90": 923.0,
+    "p95": 1026.05
+  },
+  "extreme_examples": {
+    "longest_10": [
+      {
+        "content_head_200": "Java is a prominent programming language in software development and is particularly effective for building applications with AWS SQS. Its mature ecosystem and strong community support empower develop",
+        "length": 8235,
+        "uid": "db1bc2fa-0c32-4f40-b3b9-7d3ee8c75979",
+        "word_count": 1097
+      },
+      {
+        "content_head_200": "Useful AI refers to AI systems that effectively fulfill the functional requirements necessary to meet the needs of users within appropriate real-world contexts of work and daily life. Historically, on",
+        "length": 7944,
+        "uid": "06351271-ae33-443a-9762-4e8e92117543",
+        "word_count": 1098
+      },
+      {
+        "content_head_200": "Like Peter Jefferson, Thomas Marshall relocated westward to take advantage of the opportunities presented by the frontier. In 1752, upon the death of \"John of the forest,\" he left most of his modest e",
+        "length": 7597,
+        "uid": "3f02e16a-7590-4bad-a657-6d8e73fd89aa",
+        "word_count": 1134
+      },
+      {
+        "content_head_200": "The combined action of these two vitamins has been shown to reduce oxidative stress resulting from physical exertion, which is linked to skeletal muscle damage. Additionally, their synergy can help pr",
+        "length": 7160,
+        "uid": "8dedb932-29fd-497d-a5f7-fb60942c1b7d",
+        "word_count": 1026
+      },
+      {
+        "content_head_200": "Values, ethics, and morality—products of human cognition—are fundamental traits that distinguish humans from other species. The capacity to judge actions as right or wrong forms a cornerstone of moder",
+        "length": 7068,
+        "uid": "3c71c482-8bd4-4d28-b165-a2535768beb1",
+        "word_count": 1002
+      },
+      {
+        "content_head_200": "Being injured in a truck accident can be deeply distressing. While you focus on recovery, you may encounter claims from the truck driver or trucking company suggesting you share responsibility for the",
+        "length": 7014,
+        "uid": "62598d3f-1c64-4726-bd60-94740af26ad8",
+        "word_count": 1027
+      },
+      {
+        "content_head_200": "To effectively design tombstones and houses according to the foundational principle of the \"A Thousand Buddha\" Character Script 万佛字诀 found in QingNan AoYou, mastery of this specific modus operandi is ",
+        "length": 6991,
+        "uid": "c09bc4db-b38d-4ebe-a5db-92d1c76d2548",
+        "word_count": 1090
+      },
+      {
+        "content_head_200": "The display consists of multiple coated, printed, or laminated layers that form a film structure incorporating key components of a reflective display. These include liquid crystal material, transparen",
+        "length": 6939,
+        "uid": "a7983114-c035-4c21-9636-f4932c35e4e2",
+        "word_count": 1011
+      },
+      {
+        "content_head_200": "Improper water pressure is a frequent plumbing issue. Plastic septic tanks are more resistant to cracking than concrete and do not rust, but their lightweight nature makes them prone to damage during ",
+        "length": 6910,
+        "uid": "990b7d4b-f45c-4955-bcd2-373f774d16ae",
+        "word_count": 1038
+      },
+      {
+        "content_head_200": "The Biological Evolution of Pain   by Socrethics First version 2007 Last version 2018    The capacity to experience pain increases with evolutionary development and appears to have no inherent limit. ",
+        "length": 6805,
+        "uid": "6d1e4e02-cf32-4b09-bc9b-2f5fe68f3e2c",
+        "word_count": 976
+      }
+    ],
+    "noise_hit_examples_top10": [
+      {
+        "matched_term_count": 1,
+        "matched_terms": [
+          "Advertisement"
+        ],
+        "snippet": " and typical salary ranges. It also included guidance on crafting effective job advertisements, sample interview questions, and answers to common queries related to hiring paraprofessionals. Individuals seeking further information about paraprofessionals are encouraged to explore",
+        "uid": "10b90686-b5dc-469e-89d1-1674702bced0"
+      },
+      {
+        "matched_term_count": 1,
+        "matched_terms": [
+          "textbook"
+        ],
+        "snippet": "se through New Star Books, Limited, with a 21-day \"Any Reason\" guarantee on all textbooks.",
+        "uid": "124904b4-fcc1-4472-a36d-a06c282fd8d8"
+      },
+      {
+        "matched_term_count": 1,
+        "matched_terms": [
+          "Question:"
+        ],
+        "snippet": "the Soviet system in Europe marked a transformative moment, raising the central question: what should be Europe’s primary concern in the aftermath of this great revolution? Key insights from Robert Schuman’s speeches are explored in the study New Cold War or Common European Home?",
+        "uid": "34492499-51e0-4e64-aaa5-3266f4ebd8e0"
+      },
+      {
+        "matched_term_count": 1,
+        "matched_terms": [
+          "textbook"
+        ],
+        "snippet": " Focus on a limited number of central ideas per lecture. Avoid simply repeating textbook content. Stay adaptable and open to adjusting your notes as needed during delivery.  To develop beautiful handwriting, choose a preferred writing style, such as cursive or block letters. Use ",
+        "uid": "3d87b24f-d594-42d0-b005-1b586da3403a"
+      },
+      {
+        "matched_term_count": 1,
+        "matched_terms": [
+          "abstract"
+        ],
+        "snippet": "umption concerns orientation to learning: mature learners shift from a focus on abstract subjects to a preference for learning that addresses immediate, real-world problems. The fifth assumption, added later, is motivation to learn: adults are primarily driven by internal motivat",
+        "uid": "4126f263-b680-43cf-b2fe-b8bb2bcd2852"
+      },
+      {
+        "matched_term_count": 1,
+        "matched_terms": [
+          "Follow us"
+        ],
+        "snippet": "uction Machinery Technology Co., Ltd. All rights reserved ICP20143698   Scan to follow us    Microcomputer-Based Testing System for Instantaneous Safety Tongs    The CABR JDAQ-V1.0 safety gear instantaneous type microcomputer testing system is designed for simulating the compress",
+        "uid": "485864b1-4308-49f3-b54a-4b5878ad3512"
+      },
+      {
+        "matched_term_count": 1,
+        "matched_terms": [
+          "blog"
+        ],
+        "snippet": "nt.  Content marketing has existed for over a century and comes in many formats—blog posts, podcasts, ebooks, infographics, long- and short-form videos, documentaries, events, and print magazines. The key is that all impactful content marketing revolves around compelling stories ",
+        "uid": "823721c7-7cdd-4370-b595-66d4d3b858c4"
+      },
+      {
+        "matched_term_count": 1,
+        "matched_terms": [
+          "Newsletter"
+        ],
+        "snippet": " Charles Erskine Scott Wood and currently edits the Friends of William Stafford newsletter.",
+        "uid": "90932de8-91ce-4575-a737-8d75819269f7"
+      },
+      {
+        "matched_term_count": 1,
+        "matched_terms": [
+          "as an ai"
+        ],
+        "snippet": "ality. The simplest method of backflow prevention is physical separation, known as an air gap, between a water supply outlet and the receiving plumbing fixture.  Leaks are a leading cause of unexpectedly high water bills. Hard water deposits, such as calcium and lime, can accumul",
+        "uid": "990b7d4b-f45c-4955-bcd2-373f774d16ae"
+      },
+      {
+        "matched_term_count": 1,
+        "matched_terms": [
+          "abstract"
+        ],
+        "snippet": " journal article, however, presented the results in a more favorable light. Its abstract began by stating that significant differences (p ≤ 0.05) favoring quetiapine were observed throughout the trial. The results section began by reporting statistically significant differences o",
+        "uid": "b5cfa172-1f55-4fdf-afaf-08ac8a1b28f9"
+      }
+    ],
+    "shortest_10": [
+      {
+        "content_head_200": "Two students from Johan de Witt College in The Hague will showcase the outcomes of a poetry initiative developed in collaboration with Huis van Gedichten (House of Poems). Approximately twenty student",
+        "length": 541,
+        "uid": "d4eb1e54-ea90-4b08-9577-d638828108b1",
+        "word_count": 84
+      },
+      {
+        "content_head_200": "How many of the Youth 85 readers might recognize that a basketball game can play a meaningful role in education? Before assuming otherwise, consider this: nearly every college maintains a basketball t",
+        "length": 549,
+        "uid": "3f5446f8-c9e9-44af-b090-6ab381e20249",
+        "word_count": 85
+      },
+      {
+        "content_head_200": "Growing up in a nation where agriculture is a key part of the economy, we strongly believe children should understand the origins of their food. Fortunately, there are numerous apps available to suppo",
+        "length": 578,
+        "uid": "c6cf9cf4-e514-491a-bcd1-17626c299c06",
+        "word_count": 89
+      },
+      {
+        "content_head_200": "Cydia apps cannot be removed from the iPhone's Home Screen using the standard method of pressing and holding the app icon. However, this limitation can be overcome with a tool called CyDelete. To use ",
+        "length": 583,
+        "uid": "f8bc66e5-8d0c-4cef-b1e2-446ce4164975",
+        "word_count": 97
+      },
+      {
+        "content_head_200": "Coastline refers to the line that marks the boundary between land and a body of water such as an ocean or lake, or the shape formed by this boundary. It can also describe the overall outline of a coas",
+        "length": 636,
+        "uid": "f8ce93a1-18f7-40b2-940a-fdbcf7e7bb36",
+        "word_count": 117
+      },
+      {
+        "content_head_200": "To apply the same grouping logic across multiple queries, you can either include the identical calculation in the Group By clause of a SQL query or define a Calculated Field in the Data Window and reu",
+        "length": 675,
+        "uid": "05ce9cd5-eaa2-4666-8086-b712d929f30d",
+        "word_count": 104
+      },
+      {
+        "content_head_200": "The solar water pumping system functions as an independent unit powered by photovoltaic (PV) technology. Solar cells convert sunlight into electricity, which drives a DC surface centrifugal mono-block",
+        "length": 699,
+        "uid": "b861c990-865c-403b-9e96-fedcd7494f90",
+        "word_count": 102
+      },
+      {
+        "content_head_200": "The crew takes on a fun challenge: what knife would you choose with a budget of $25, $100, or $300? We’re not claiming these selections are the absolute best value, but each was picked for specific, t",
+        "length": 706,
+        "uid": "9b3e62c3-3d3c-465e-aa61-1c6348fe5480",
+        "word_count": 113
+      },
+      {
+        "content_head_200": "The National Institute of Allergy and Infectious Diseases (NIAID), a component of the National Institutes of Health (NIH), has published results from a large clinical trial. The findings show that bot",
+        "length": 723,
+        "uid": "f1440cb3-205e-4b65-892c-6930ec604bfb",
+        "word_count": 110
+      },
+      {
+        "content_head_200": "Mr Burger, a fast-food chain once prevalent across west Texas, eastern New Mexico, and western Oklahoma, is remembered by some as the worst burger chain ever. Though its peak popularity occurred in th",
+        "length": 776,
+        "uid": "09d8e819-a0b1-40df-8eef-ed3d783f9442",
+        "word_count": 115
+      }
+    ],
+    "unexpected_schema_examples": []
+  },
+  "input_overview": {
+    "input_jsonl_sha256": "5caa2c14a5503a98faee34aaa4a36150fb5a2cb7956be764136cbb1b7a8a15f4",
+    "input_path": "data/official/en/multi_style_raw.jsonl",
+    "sample_count": 200,
+    "style_distribution": {
+      "multi_style": 200
+    }
+  },
+  "risk_noise_prompt_trace_keywords": {
+    "examples_top10": [
+      {
+        "matched_term_count": 1,
+        "matched_terms": [
+          "Advertisement"
+        ],
+        "snippet": " and typical salary ranges. It also included guidance on crafting effective job advertisements, sample interview questions, and answers to common queries related to hiring paraprofessionals. Individuals seeking further information about paraprofessionals are encouraged to explore",
+        "uid": "10b90686-b5dc-469e-89d1-1674702bced0"
+      },
+      {
+        "matched_term_count": 1,
+        "matched_terms": [
+          "textbook"
+        ],
+        "snippet": "se through New Star Books, Limited, with a 21-day \"Any Reason\" guarantee on all textbooks.",
+        "uid": "124904b4-fcc1-4472-a36d-a06c282fd8d8"
+      },
+      {
+        "matched_term_count": 1,
+        "matched_terms": [
+          "Question:"
+        ],
+        "snippet": "the Soviet system in Europe marked a transformative moment, raising the central question: what should be Europe’s primary concern in the aftermath of this great revolution? Key insights from Robert Schuman’s speeches are explored in the study New Cold War or Common European Home?",
+        "uid": "34492499-51e0-4e64-aaa5-3266f4ebd8e0"
+      },
+      {
+        "matched_term_count": 1,
+        "matched_terms": [
+          "textbook"
+        ],
+        "snippet": " Focus on a limited number of central ideas per lecture. Avoid simply repeating textbook content. Stay adaptable and open to adjusting your notes as needed during delivery.  To develop beautiful handwriting, choose a preferred writing style, such as cursive or block letters. Use ",
+        "uid": "3d87b24f-d594-42d0-b005-1b586da3403a"
+      },
+      {
+        "matched_term_count": 1,
+        "matched_terms": [
+          "abstract"
+        ],
+        "snippet": "umption concerns orientation to learning: mature learners shift from a focus on abstract subjects to a preference for learning that addresses immediate, real-world problems. The fifth assumption, added later, is motivation to learn: adults are primarily driven by internal motivat",
+        "uid": "4126f263-b680-43cf-b2fe-b8bb2bcd2852"
+      },
+      {
+        "matched_term_count": 1,
+        "matched_terms": [
+          "Follow us"
+        ],
+        "snippet": "uction Machinery Technology Co., Ltd. All rights reserved ICP20143698   Scan to follow us    Microcomputer-Based Testing System for Instantaneous Safety Tongs    The CABR JDAQ-V1.0 safety gear instantaneous type microcomputer testing system is designed for simulating the compress",
+        "uid": "485864b1-4308-49f3-b54a-4b5878ad3512"
+      },
+      {
+        "matched_term_count": 1,
+        "matched_terms": [
+          "blog"
+        ],
+        "snippet": "nt.  Content marketing has existed for over a century and comes in many formats—blog posts, podcasts, ebooks, infographics, long- and short-form videos, documentaries, events, and print magazines. The key is that all impactful content marketing revolves around compelling stories ",
+        "uid": "823721c7-7cdd-4370-b595-66d4d3b858c4"
+      },
+      {
+        "matched_term_count": 1,
+        "matched_terms": [
+          "Newsletter"
+        ],
+        "snippet": " Charles Erskine Scott Wood and currently edits the Friends of William Stafford newsletter.",
+        "uid": "90932de8-91ce-4575-a737-8d75819269f7"
+      },
+      {
+        "matched_term_count": 1,
+        "matched_terms": [
+          "as an ai"
+        ],
+        "snippet": "ality. The simplest method of backflow prevention is physical separation, known as an air gap, between a water supply outlet and the receiving plumbing fixture.  Leaks are a leading cause of unexpectedly high water bills. Hard water deposits, such as calcium and lime, can accumul",
+        "uid": "990b7d4b-f45c-4955-bcd2-373f774d16ae"
+      },
+      {
+        "matched_term_count": 1,
+        "matched_terms": [
+          "abstract"
+        ],
+        "snippet": " journal article, however, presented the results in a more favorable light. Its abstract began by stating that significant differences (p ≤ 0.05) favoring quetiapine were observed throughout the trial. The results section began by reporting statistically significant differences o",
+        "uid": "b5cfa172-1f55-4fdf-afaf-08ac8a1b28f9"
+      }
+    ],
+    "note": "Keyword hits are a coarse scan and may be false positives (e.g. 'Comments' as prose); not a direct quality verdict.",
+    "rows_with_any_keyword": 21,
+    "term_stats": {
+      "Advertisement": {
+        "row_hit_count": 2,
+        "sample_uids": [
+          "10b90686-b5dc-469e-89d1-1674702bced0",
+          "f6d329d1-4e9b-43e8-856c-c4075311d0cb"
+        ],
+        "term_occurrence_count": 2
+      },
+      "Answer:": {
+        "row_hit_count": 0,
+        "sample_uids": [],
+        "term_occurrence_count": 0
+      },
+      "Click here": {
+        "row_hit_count": 0,
+        "sample_uids": [],
+        "term_occurrence_count": 0
+      },
+      "Comments": {
+        "row_hit_count": 3,
+        "sample_uids": [
+          "f4b15c3e-0efa-4050-9213-0105a8ebfc9a",
+          "e5de4010-a6a6-4f7f-a955-ce8ab1426fae",
+          "d5f33b68-f410-4c6f-9437-a02eae178414"
+        ],
+        "term_occurrence_count": 3
+      },
+      "Cookie": {
+        "row_hit_count": 0,
+        "sample_uids": [],
+        "term_occurrence_count": 0
+      },
+      "Follow us": {
+        "row_hit_count": 2,
+        "sample_uids": [
+          "485864b1-4308-49f3-b54a-4b5878ad3512",
+          "f633afe6-9c88-4e4a-9b65-3d8aad18948e"
+        ],
+        "term_occurrence_count": 2
+      },
+      "Newsletter": {
+        "row_hit_count": 1,
+        "sample_uids": [
+          "90932de8-91ce-4575-a737-8d75819269f7"
+        ],
+        "term_occurrence_count": 1
+      },
+      "Privacy policy": {
+        "row_hit_count": 0,
+        "sample_uids": [],
+        "term_occurrence_count": 0
+      },
+      "Question:": {
+        "row_hit_count": 3,
+        "sample_uids": [
+          "f68f262d-546b-44c3-b7fe-6120e5943250",
+          "bbda6c06-c171-41be-b9d8-a68ab947e47a",
+          "34492499-51e0-4e64-aaa5-3266f4ebd8e0"
+        ],
+        "term_occurrence_count": 3
+      },
+      "Read more": {
+        "row_hit_count": 0,
+        "sample_uids": [],
+        "term_occurrence_count": 0
+      },
+      "Related posts": {
+        "row_hit_count": 0,
+        "sample_uids": [],
+        "term_occurrence_count": 0
+      },
+      "Share this": {
+        "row_hit_count": 0,
+        "sample_uids": [],
+        "term_occurrence_count": 0
+      },
+      "Sponsored": {
+        "row_hit_count": 1,
+        "sample_uids": [
+          "cfc73001-3f16-461f-9234-3d3bfdf3d7d0"
+        ],
+        "term_occurrence_count": 1
+      },
+      "Subscribe": {
+        "row_hit_count": 1,
+        "sample_uids": [
+          "db1bc2fa-0c32-4f40-b3b9-7d3ee8c75979"
+        ],
+        "term_occurrence_count": 3
+      },
+      "Tweet": {
+        "row_hit_count": 0,
+        "sample_uids": [],
+        "term_occurrence_count": 0
+      },
+      "abstract": {
+        "row_hit_count": 2,
+        "sample_uids": [
+          "b5cfa172-1f55-4fdf-afaf-08ac8a1b28f9",
+          "4126f263-b680-43cf-b2fe-b8bb2bcd2852"
+        ],
+        "term_occurrence_count": 3
+      },
+      "as a language model": {
+        "row_hit_count": 0,
+        "sample_uids": [],
+        "term_occurrence_count": 0
+      },
+      "as an ai": {
+        "row_hit_count": 1,
+        "sample_uids": [
+          "990b7d4b-f45c-4955-bcd2-373f774d16ae"
+        ],
+        "term_occurrence_count": 1
+      },
+      "blog": {
+        "row_hit_count": 3,
+        "sample_uids": [
+          "e60bee6e-5ce7-4d48-b380-86f9daf2d49e",
+          "d056e634-8d27-45b2-a9a3-848ac4217fdd",
+          "823721c7-7cdd-4370-b595-66d4d3b858c4"
+        ],
+        "term_occurrence_count": 8
+      },
+      "encyclopedia": {
+        "row_hit_count": 0,
+        "sample_uids": [],
+        "term_occurrence_count": 0
+      },
+      "in this article": {
+        "row_hit_count": 0,
+        "sample_uids": [],
+        "term_occurrence_count": 0
+      },
+      "rewritten": {
+        "row_hit_count": 0,
+        "sample_uids": [],
+        "term_occurrence_count": 0
+      },
+      "sign up": {
+        "row_hit_count": 0,
+        "sample_uids": [],
+        "term_occurrence_count": 0
+      },
+      "textbook": {
+        "row_hit_count": 2,
+        "sample_uids": [
+          "3d87b24f-d594-42d0-b005-1b586da3403a",
+          "124904b4-fcc1-4472-a36d-a06c282fd8d8"
+        ],
+        "term_occurrence_count": 2
+      },
+      "the following text": {
+        "row_hit_count": 0,
+        "sample_uids": [],
+        "term_occurrence_count": 0
+      }
+    }
+  },
+  "schema_check": {
+    "empty_content_count": 0,
+    "parse_error_count": 0,
+    "parse_errors_sample": [],
+    "qa_marker_count": 0,
+    "rows_parseable": 200,
+    "strict_schema_count": 200,
+    "style_multi_style_count": 200,
+    "unexpected_field_count": 0,
+    "unexpected_schema_examples": []
+  },
+  "structure_distribution": {
+    "avg_paragraph_len": {
+      "max": 4309.0,
+      "mean": 806.45,
+      "median": 652.65,
+      "min": 206.5,
+      "p25": 482.69,
+      "p5": 319.38,
+      "p50": 652.65,
+      "p75": 922.75,
+      "p90": 1297.2,
+      "p95": 1904.4
+    },
+    "bullet_or_list_line_count": {
+      "max": 30,
+      "mean": 0.68,
+      "median": 0.0,
+      "min": 0,
+      "p25": 0.0,
+      "p5": 0.0,
+      "p50": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 5.0
+    },
+    "heading_like_line_count": {
+      "max": 13,
+      "mean": 0.43,
+      "median": 0.0,
+      "min": 0,
+      "p25": 0.0,
+      "p5": 0.0,
+      "p50": 0.0,
+      "p75": 0.0,
+      "p90": 0.1,
+      "p95": 3.05
+    },
+    "markdown_heading_count": {
+      "max": 0,
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0,
+      "p25": 0.0,
+      "p5": 0.0,
+      "p50": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0
+    },
+    "numbered_line_count": {
+      "max": 10,
+      "mean": 0.28,
+      "median": 0.0,
+      "min": 0,
+      "p25": 0.0,
+      "p5": 0.0,
+      "p50": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0
+    },
+    "paragraph_count": {
+      "max": 29,
+      "mean": 5.36,
+      "median": 5.0,
+      "min": 1,
+      "p25": 1.0,
+      "p5": 1.0,
+      "p50": 5.0,
+      "p75": 8.0,
+      "p90": 10.0,
+      "p95": 13.0
+    }
+  }
+}

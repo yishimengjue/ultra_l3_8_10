@@ -1,0 +1,187 @@
+{
+  "boolean_counts": {
+    "local_noise_question": 2,
+    "local_omits_official_focus": 183,
+    "local_over_explains": 65,
+    "local_too_textbook_like": 17,
+    "local_too_verbose": 30
+  },
+  "closeness_score_means": {
+    "answer_style_similarity": 3.94,
+    "focus_similarity": 3.79,
+    "official_closeness_score": 3.68,
+    "pair_count_similarity": 4.2133,
+    "question_style_similarity": 3.79
+  },
+  "failure": 0,
+  "failure_samples": [],
+  "inputs": {
+    "local_records_path": "data/eval/en/baseline_qa_en_v1_hardened_ext300_records.jsonl",
+    "official_path": "data/eval/en/pair_eval_ext300.jsonl",
+    "official_reference_anchor_count": 24,
+    "official_reference_path": "data/eval/en/official_qa_reference_anchors.json"
+  },
+  "judge_model": "qwen3.6-35b-a3b",
+  "official_closeness_score_distribution": {
+    "1": 1,
+    "2": 10,
+    "3": 78,
+    "4": 206,
+    "5": 5
+  },
+  "outputs": {
+    "jsonl_path": "data/eval/en/eval_l1_pairwise_qa_en_v1_hardened_ext300.jsonl",
+    "summary_json_path": "data/eval/en/eval_l1_pairwise_qa_en_v1_hardened_ext300_summary.json",
+    "summary_markdown_path": "data/eval/en/eval_l1_pairwise_qa_en_v1_hardened_ext300_summary.md"
+  },
+  "quality_score_means": {
+    "answerability_score": 4.9933,
+    "coverage_score": 3.8967,
+    "faithfulness_score": 4.9867,
+    "hallucination_risk_score": 5.0,
+    "self_containment_score": 4.93
+  },
+  "score_summary": {
+    "answer_style_similarity": {
+      "distribution": {
+        "2": 8,
+        "3": 53,
+        "4": 188,
+        "5": 51
+      },
+      "mean": 3.94,
+      "median": 4.0
+    },
+    "answerability_score": {
+      "distribution": {
+        "4": 2,
+        "5": 298
+      },
+      "mean": 4.9933,
+      "median": 5.0
+    },
+    "coverage_score": {
+      "distribution": {
+        "1": 1,
+        "2": 4,
+        "3": 40,
+        "4": 235,
+        "5": 20
+      },
+      "mean": 3.8967,
+      "median": 4.0
+    },
+    "faithfulness_score": {
+      "distribution": {
+        "3": 1,
+        "4": 2,
+        "5": 297
+      },
+      "mean": 4.9867,
+      "median": 5.0
+    },
+    "focus_similarity": {
+      "distribution": {
+        "1": 1,
+        "2": 12,
+        "3": 54,
+        "4": 215,
+        "5": 18
+      },
+      "mean": 3.79,
+      "median": 4.0
+    },
+    "hallucination_risk_score": {
+      "distribution": {
+        "5": 300
+      },
+      "mean": 5.0,
+      "median": 5.0
+    },
+    "official_closeness_score": {
+      "distribution": {
+        "1": 1,
+        "2": 10,
+        "3": 78,
+        "4": 206,
+        "5": 5
+      },
+      "mean": 3.68,
+      "median": 4.0
+    },
+    "pair_count_similarity": {
+      "distribution": {
+        "2": 8,
+        "3": 36,
+        "4": 140,
+        "5": 116
+      },
+      "mean": 4.2133,
+      "median": 4.0
+    },
+    "question_style_similarity": {
+      "distribution": {
+        "1": 1,
+        "2": 10,
+        "3": 53,
+        "4": 223,
+        "5": 13
+      },
+      "mean": 3.79,
+      "median": 4.0
+    },
+    "self_containment_score": {
+      "distribution": {
+        "3": 2,
+        "4": 17,
+        "5": 281
+      },
+      "mean": 4.93,
+      "median": 5.0
+    }
+  },
+  "success": 300,
+  "top_actionable_prompt_fix": [
+    {
+      "count": 1,
+      "fix": "Instruct the generator to prioritize questions about core mechanisms, consumer deception, and conceptual definitions over isolated numerical facts or metadata like book titles."
+    },
+    {
+      "count": 1,
+      "fix": "Add two more question-answer pairs targeting the opening premise about varying intentions and the author's personal blocking anecdote to align with the official coverage and pair count."
+    },
+    {
+      "count": 1,
+      "fix": "Instruct the model to generate a balanced mix of direct, T/F, MC, and comparative/definitional questions, targeting 8 pairs to fully capture analytical angles and key details."
+    },
+    {
+      "count": 1,
+      "fix": "Include a direct comparative question explicitly contrasting the \"what\" (utility) and \"why\" (storytelling) of aspects to match the official focus distribution."
+    },
+    {
+      "count": 1,
+      "fix": "Instruct the model to generate direct open-ended questions matching the official style and explicitly cover all key thematic elements, avoiding True/False or multiple-choice formats unless necessary."
+    },
+    {
+      "count": 1,
+      "fix": "Require the generation of at least one multiple-choice and one true/false question per set, and frame remaining questions as direct factual checks rather than step-by-step instructions."
+    },
+    {
+      "count": 1,
+      "fix": "Explicitly require generating questions for every distinct technical concept (data types, default formats, property behaviors) to match the official pair count and scope."
+    },
+    {
+      "count": 1,
+      "fix": "Expand the output to exactly 8 pairs by including questions on all specific experimental techniques and instruments mentioned, while maintaining a balanced mix of yes/no, true/false, and multiple-choice formats."
+    },
+    {
+      "count": 1,
+      "fix": "Incorporate at least one question that synthesizes the overarching theme or emotional resonance of the text, balancing the current detailed extraction with broader conceptual framing."
+    },
+    {
+      "count": 1,
+      "fix": "Include questions targeting key collaborators (e.g., vocalist) and the song's overarching emotional impact to align with official coverage patterns."
+    }
+  ],
+  "total": 300
+}
