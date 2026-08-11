@@ -10,12 +10,14 @@
 
 | 线 | 封板 prompt | 接近官方 | 核心质量（判官 1-5，人工校准偏宽） |
 |----|------------|---------|-----------------------------------|
-| 中文 QA | `qa_gen_v3_30_forcetype_zh` | closeness **2.76**（DMX 判官） | 忠实 4.73 / 可答 4.60 / 自足 3.65 / 覆盖 3.24 |
+| 中文 QA | `qa_gen_v3_35_trim_zh`（取代 v3.30） | closeness **2.847**（DMX 判官） | 忠实 4.85 / 可答 4.70 / 自足 3.76 / 覆盖 3.25 |
 | 英文 QA | `qa_gen_en_v1`（hardened） | closeness **3.76**（35b 判官） | 忠实 5.0 / 可答 5.0 / 自足 4.99 / 覆盖 3.98 |
 | 中文 rewrite | `rewrite_styles_v4.3.5-v5090` | style_closeness **4.62** | 忠实 4.87 / overall 4.74 / 信息保留 4.90 |
 | 英文 rewrite | `rewrite_styles_v3.7` | 人工 **4.99**（198/200 pass） | 忠实 5.0 / overall 4.98 |
 
-> **口径说明**：QA 与 rewrite 评分体系不同，不可直接比大小。**中文 QA v3.30 用 DMX `claude-sonnet-4-6` 判官（closeness 2.76）；其余三线用 `qwen3.6-35b-a3b` 判官——两 QA 线的 closeness 判官不同，横比仅供参考。** 35b 判官人工校准过、偏宽，读作"无红旗"。中文 QA 相对旧 v3.28 的真实提升取同判官（DMX）同种子配对：closeness 2.49→2.76（+0.27）。
+> **口径说明**：QA 与 rewrite 评分体系不同，不可直接比大小。**中文 QA v3.35 用 DMX `claude-sonnet-4-6` 判官（closeness 2.847）；其余三线用 `qwen3.6-35b-a3b` 判官——两 QA 线的 closeness 判官不同，横比仅供参考。** 35b 判官人工校准过、偏宽，读作"无红旗"。
+>
+> **中文 QA 封板演进（v3.30 → v3.35，均 DMX 同判官同种子配对）**：v3.30（强制题型，2.758）为 2026-08-07 首次封板；v3.32 加"事实题层次化"软提示提到 **2.847**（faith 4.73→4.83，部分修正"prompt 已到边际"旧论）；**v3.35** 在 v3.32 上删 5 行答案格式复述冗余，judge 全维度持平/微升、faith **4.847**（全场最高）、更精简，**2026-08-11 取代 v3.30 封板**。其后 v3.33/34/36 三轮（求短/为主/催深度题）均证伪，prompt 层确认到顶。
 
 ---
 
@@ -25,7 +27,7 @@
 L3_delivery/
 ├── README.md                 # 本文件
 ├── prompts/                  # 四条线封板 prompt（文件名后缀标注 SEALED）
-│   ├── qa_gen_v3_30_forcetype_zh__ZH_QA_SEALED.txt
+│   ├── qa_gen_v3_35_trim_zh__ZH_QA_SEALED.txt   # 中文 QA 封板（取代 v3_30，后者保留作留痕）
 │   ├── qa_gen_en_v1__EN_QA_SEALED.txt
 │   ├── rewrite_styles_v4_3_5_v5090_zh__ZH_REWRITE_SEALED.yaml
 │   └── rewrite_styles_v3_7_en__EN_REWRITE_SEALED.yaml
@@ -41,7 +43,7 @@ L3_delivery/
 │   ├── extract_seed_from_l3.py / _en.py   # 种子/QA 对切分
 │   └── filter_rewrite_seed_numeric_guard.py  # 种子数值护栏（synthesize 依赖）
 ├── configs/                  # 四条线封板生产 config（paths 指向 prompts/）
-│   ├── config_zh_qa__SEALED_v3.30.yaml
+│   ├── config_zh_qa__SEALED_v3.35.yaml    # 当前封板（取代 v3.30，后者保留作留痕）
 │   ├── config_en_qa__SEALED_v1hardened.yaml
 │   ├── config_zh_rewrite__SEALED_v5090.yaml
 │   └── config_en_rewrite__SEALED_v3.7.yaml
@@ -69,7 +71,7 @@ L3_delivery/
 - **上传服务器时**：确保用本包这两个文件覆盖旧版；`config` 的 `extra_body` 段必须保留。
 - **验证方法**：合成后检查输出 `_finish_reason` 应为 `stop`、`_completion_tokens` 为几百而非撞 `max_tokens`、content 无 `<think>` 残留。
 
-> **中文 QA v3.30 追加的数据卫生（已在本包 code 内）**：
+> **中文 QA 数据卫生（v3.30 起引入，v3.35 沿用，均在本包 code 内）**：
 > - `common.py` L0 后过滤：删露怯元话语答案（`reasoning_leak_answer`）、修复选项错位到答案字段的选择题、多选答案保护。
 > - `synthesize.py` 种子层：`_ocr_garble_reason` 拦截整篇中文 OCR 断裂的垃圾源文（连续异常标点 ≥1.5/百字），合成前丢弃，500 条种子池命中 1 条零误伤。
 > - 效果：CLEAN 生产产出四类脏数据（露怯 / 选项错位 / `<think>` / OCR 垃圾源文）全部归零。
@@ -87,14 +89,14 @@ L3_delivery/
    # 每行 {"_source_text": "..."} → {"content": "...", "_source_text": "..."}
    ```
    否则合成会"取到 0 篇文档"、成功率 0。
-3. **config 用环境变量切换**：`REWRITE_CONFIG=configs/config_zh_qa__SEALED_v3.30.yaml python src/synthesize.py`。
+3. **config 用环境变量切换**：`REWRITE_CONFIG=configs/config_zh_qa__SEALED_v3.35.yaml python src/synthesize.py`。
 
 ```bash
 # 环境变量
 export REWRITE_API_KEY=EMPTY REWRITE_BASE_URL=http://127.0.0.1:8003/v1
 
 # 合成（REWRITE_CONFIG 指定 config，否则默认 config.yaml）
-REWRITE_CONFIG=configs/config_zh_qa__SEALED_v3.30.yaml python src/synthesize.py
+REWRITE_CONFIG=configs/config_zh_qa__SEALED_v3.35.yaml python src/synthesize.py
 
 # 评测
 python eval_l0.py                                    # L0 结构质检
@@ -103,6 +105,7 @@ python eval_l1_rewrite_official_style.py --local-full <out>/multi_style_full.jso
 ```
 
 **吞吐甜点（5090 实测，见吞吐报告）**：QA 并发 16（中文 v3.30 c16 实测 **85.7 篇/min**、英文 62 篇/min）；rewrite 并发 8（zh 13.6 篇/min、en 10.33 篇/min）。判官必须 2 并发（高并发下 8192 显存竞争会截断 JSON）；rewrite 判官 anchor 默认 4（16 个会撑爆 8192 输入）。
+> 注：85.7 篇/min 为 v3.30 在 5090 实测；v3.35 仅 prompt 微调（−3% 字符）、不改架构，5090 吞吐应基本一致，但未在 5090 复测（v3.35 评测在阿里云 API 上做）。
 
 ---
 
@@ -110,7 +113,7 @@ python eval_l1_rewrite_official_style.py --local-full <out>/multi_style_full.jso
 
 | 语言 | 线 | 封板版本 | 并发 | 墙钟吞吐 | 成功率 | 坏数据 |
 |------|-----|---------|------|---------|--------|--------|
-| 中文 | QA | v3.30 | 16 | **85.7 篇/分** | 0.985 | 0 |
+| 中文 | QA | v3.30→v3.35 | 16 | **85.7 篇/分**（v3.30 实测；v3.35 未在5090复测） | 0.985 | 0 |
 | 英文 | QA | v1-hardened | 16 | **62.0 篇/分** | 0.991 | 0 |
 | 中文 | rewrite | v4.3.5-v5090 | 8 | **13.6 篇/分**（54.3 调用/分） | 1.0 | 0 |
 | 英文 | rewrite | v3.7 | 8 | **10.33 篇/分**（+prefix cache 11.31） | 0.95 | 0 |
@@ -122,8 +125,8 @@ python eval_l1_rewrite_official_style.py --local-full <out>/multi_style_full.jso
 
 ## 六、样例展示（四条线各一例，均取自封板产出，未改动）
 
-### 6.1 中文 QA（v3.30，判官 closeness=3 / 忠实=5）
-脑卒中科普原文，展示「强制题型」效果：判断/选择/原因/事实题俱全，全部忠实可原文定位。
+### 6.1 中文 QA（判官 closeness=3 / 忠实=5）
+脑卒中科普原文，展示「强制题型」效果：判断/选择/原因/事实题俱全，全部忠实可原文定位。（此样例取自 v3.30 产出；v3.35 沿用同一套强制题型策略，题型结构一致。v3.35 与官方/v3.32 的逐篇四方对照见 `samples/` 下对比表。）
 
 **原文（节选）**：看 1 张脸是否对称、有无眼斜嘴歪；2 看手臂是否单侧无力；0 代表聆听有无言语不清。如果有，就要怀疑是不是中风……脑出血恢复极为缓慢……预防工作显得格外重要——高血压患者一定要遵医嘱按时服药……饮食上低盐、低脂……
 
@@ -158,7 +161,7 @@ python eval_l1_rewrite_official_style.py --local-full <out>/multi_style_full.jso
 
 **Rewrite（blog 风格）**：The EPA's Multispecies Care Survey is currently featured in a new online exhibition titled "Agency." The showcase was organized for Broto's Art-Climate-Science annual conference, which serves as an online c…
 
-> 更多样例：四线各 30 条汇总见 `samples/L3_四线封板样例汇总.xlsx`；中文 QA 四方对照（原文+官方+v3.30+v3.28/v3.31）见 `qwen_L3/zh/qa/compare_*.md`；中文 QA 全量人工可读表见 `qwen_L3/zh/qa/qa_zh_v330_交付数据_人工可读.xlsx`。
+> 更多样例：四线各 30 条汇总见 `samples/L3_四线封板样例汇总.xlsx`；**中文 QA 封板 v3.35 与官方/v3.32 四方对照（原文+官方+v3.32+v3.35）见 `samples/对比样例_v332_vs_v335.xlsx`**；早期 v3.30 四方对照见 `qwen_L3/zh/qa/compare_*.md`。
 
 ---
 

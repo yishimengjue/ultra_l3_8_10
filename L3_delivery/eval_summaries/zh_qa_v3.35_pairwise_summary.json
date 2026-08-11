@@ -1,0 +1,17 @@
+{
+  "tag": "27b_v335_n100",
+  "judge_model": "claude-sonnet-4-6",
+  "n": 98,
+  "means": {
+    "official_closeness_score": 2.847,
+    "faithfulness_score": 4.847,
+    "answerability_score": 4.704,
+    "hallucination_risk_score": 4.653,
+    "self_containment_score": 3.755,
+    "coverage_score": 3.245,
+    "question_style_similarity": 2.857,
+    "answer_style_similarity": 3.092,
+    "focus_similarity": 2.99,
+    "pair_count_similarity": 3.673
+  }
+}
