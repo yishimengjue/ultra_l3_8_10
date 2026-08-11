@@ -1,0 +1,40 @@
+# 中文 QA 封板生产配置 · prompt=v3.35(v3.32 事实题层次化 + 删答案格式复述冗余) · closeness 2.847 / 忠实 4.847（判官 DMX claude-sonnet-4-6）
+# 取代 v3.30 为当前封板（2026-08-11）。质量提升来自 v3.32“事实题层次化”一句软提示；v3.35 在其上删 5 行与题型策略段重复的答案格式复述，judge 全维度持平/微升，更精简易维护。
+# 【部署口径说明】v3.35 的 judge 数字均在【阿里云百炼 qwen3.6-27b（非量化、max_len 8192）】上验证。下方 5090 本地部署段沿用 v3.30 模板，v3.35 尚未在 5090/FP8 上复验；如需本地生产请先在 5090 上复跑护栏确认再用。
+llm:
+  base_url: "http://127.0.0.1:8003/v1"   # 5090 本地 vLLM；served id 实为 Qwen3.6-27B 推理模型
+  base_url_env: "REWRITE_BASE_URL"
+  api_key_env: "REWRITE_API_KEY"
+  synth_model: "qwen-math-classifier"
+  judge_model: "qwen-math-classifier"
+  extra_headers: {}
+  extra_body:                             # 关思维链；须配合修复版 common.py(读 extra_body)才生效
+    chat_template_kwargs:
+      enable_thinking: false
+  temperature: 0.7
+  judge_temperature: 0.0
+  max_tokens: 3072                        # max_model_len=8192 限制
+  request_timeout: 600
+  max_retries: 3
+
+seed:
+  source: "local"
+  local_path: "data/seeds/<你的zh种子>.jsonl"
+  language: "zh"
+  n_docs: 500
+  min_chars: 500
+  max_chars: 8000
+
+synthesis:
+  do_qa: true
+  do_rewrite: false
+  qa_min_pairs: 3
+  qa_max_pairs: 8
+  concurrency: 16                         # QA 线 5090 甜点(c16 实测墙钟 85.7 篇/min)
+
+paths:
+  prompt_dir: "prompts"
+  qa_prompt_zh: "prompts/qa_gen_v3_35_trim_zh__ZH_QA_SEALED.txt"
+  rewrite_prompt_zh: "prompts/rewrite_styles_v4_3_5_v5090_zh__ZH_REWRITE_SEALED.yaml"  # synthesize 无条件加载 qa+rewrite 两者，即使 do_rewrite=false 也需此行
+  out_dir: "outputs/zh_qa_prod"
+  eval_dir: "data/eval/zh_qa_prod"
