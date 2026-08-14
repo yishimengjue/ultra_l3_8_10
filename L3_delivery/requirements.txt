@@ -1,0 +1,12 @@
+# Ultra-FineWeb-L3 精炼层交付包依赖
+# Python >= 3.9（用到 dataclasses / typing / f-string）
+# 安装：pip install -r requirements.txt
+
+openai>=1.30.0        # LLM 客户端（OpenAI 兼容接口：阿里云百炼 / 本地 vLLM 均走此库）
+pydantic>=2.6.0       # QA/rewrite 输出 schema 校验
+pyyaml>=6.0           # 读 config.yaml 与 rewrite 风格 yaml
+tqdm>=4.66.0          # 合成进度条
+
+# 可选：仅当 seed.source="hf" 从 HuggingFace 流式拉取种子时需要；
+# 用本地 jsonl 种子（source="local"，交付包默认）时无需安装。
+# datasets>=2.19.0

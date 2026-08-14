@@ -26,6 +26,7 @@
 ```
 L3_delivery/
 ├── README.md                 # 本文件
+├── requirements.txt          # Python 依赖（openai/pydantic/pyyaml/tqdm）
 ├── prompts/                  # 四条线封板 prompt（文件名后缀标注 SEALED）
 │   ├── qa_gen_v3_35_trim_zh__ZH_QA_SEALED.txt   # 中文 QA 封板（取代 v3_30，后者保留作留痕）
 │   ├── qa_gen_en_v1__EN_QA_SEALED.txt
@@ -79,6 +80,8 @@ L3_delivery/
 ---
 
 ## 四、生产运行方式（每条线）
+
+**第 0 步 装依赖**（Python ≥ 3.9）：`pip install -r requirements.txt`
 
 从含 `prompts/`、`code/`、`configs/`、`data/seeds/` 的目录根运行（需先把 `code/` 目录改名为 `src/`、准备种子）：
 
