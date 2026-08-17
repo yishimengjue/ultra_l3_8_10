@@ -79,32 +79,104 @@ L3_delivery/
 
 ---
 
-## 四、生产运行方式（每条线）
+## 四、生产运行方式（从零部署，手把手）
 
-**第 0 步 装依赖**（Python ≥ 3.9）：`pip install -r requirements.txt`
+> 目标：拿到本包后，在一台**云服务器或本地机器**上跑通中文 QA 合成。其余三条线把 config 换掉即可，命令一致。
 
-从含 `prompts/`、`code/`、`configs/`、`data/seeds/` 的目录根运行（需先把 `code/` 目录改名为 `src/`、准备种子）：
+### 第 1 步 · 摆好目录（关键，别跳过）
 
-**⚠ 部署前两个必查项（均由交付冒烟实测发现）：**
-1. **config 必须同时含 qa + rewrite 两个 prompt 路径（同语言）**：`synthesize.py` 无条件加载两者，即使 `do_qa=false` 或 `do_rewrite=false`。本包 4 个 config 已补全，勿删。
-2. **种子必须有 `content`（或 `text`）字段**：`load_seed` 只读 `content`/`text`，**不读 `_source_text`**。若你的种子正文在 `_source_text` 字段（如 official 种子），需先转换：
-   ```python
-   # 每行 {"_source_text": "..."} → {"content": "...", "_source_text": "..."}
-   ```
-   否则合成会"取到 0 篇文档"、成功率 0。
-3. **config 用环境变量切换**：`REWRITE_CONFIG=configs/config_zh_qa__SEALED_v3.35.yaml python src/synthesize.py`。
+代码通过「脚本所在目录的**上一级**」定位所有相对路径（`common.py: REPO_ROOT = 脚本目录的上一级`）。所以**必须把 `code/` 目录改名成 `src/`**，最终目录长这样：
+
+```
+你的工作目录/                     ← 在这里跑命令（cd 到这里）
+├── src/                          ← 由本包 code/ 改名而来
+│   ├── synthesize.py
+│   ├── common.py
+│   └── ...（其余 .py）
+├── prompts/                      ← 本包 prompts/
+├── configs/                      ← 本包 configs/
+├── data/
+│   └── seeds/
+│       └── my_seed.jsonl         ← 你自己准备的种子（见第 3 步）
+└── requirements.txt
+```
 
 ```bash
-# 环境变量
+# 从本包根目录执行
+mv code src                       # ← 这一步漏了会 import 失败
+mkdir -p data/seeds
+```
+
+### 第 2 步 · 装依赖（Python ≥ 3.9）
+
+```bash
+pip install -r requirements.txt
+```
+
+### 第 3 步 · 准备种子
+
+种子是一个 jsonl，**每行一篇原文**，正文放在 `content`（或 `_source_text` / `text`）字段之一即可——`load_seed` 按 `_source_text → content → text` 顺序取第一个非空的。最小样例：
+
+```jsonl
+{"content": "第一篇原文正文……（≥500字符，否则被 min_chars 过滤）"}
+{"content": "第二篇原文正文……"}
+```
+
+把它存成 `data/seeds/my_seed.jsonl`，再到 config 里把 `seed.local_path` 指向它、`n_docs` 设成你的篇数。
+
+### 第 4 步 · 配 config（区分「云 API」和「本地 vLLM」两种）
+
+打开 `configs/config_zh_qa__SEALED_v3.35.yaml`，改 `llm.base_url` 和种子路径：
+
+**A. 云服务器 / 云 API（如阿里云百炼，OpenAI 兼容）**
+```yaml
+llm:
+  base_url: "https://<你的云端OpenAI兼容地址>/v1"
+  api_key_env: "DASHSCOPE_API_KEY"        # 从环境变量读 key
+  synth_model: "qwen3.6-27b"
+  extra_body: {chat_template_kwargs: {enable_thinking: false}}   # 关思维链，勿删
+seed:
+  local_path: "data/seeds/my_seed.jsonl"
+  n_docs: 100
+```
+```bash
+export DASHSCOPE_API_KEY=sk-你的真实key       # 换成真 key
+```
+
+**B. 本地 vLLM（如 5090，端口 8003）**
+```yaml
+llm:
+  base_url: "http://127.0.0.1:8003/v1"
+  synth_model: "qwen-math-classifier"      # vLLM 的 served-model-name
+  extra_body: {chat_template_kwargs: {enable_thinking: false}}
+```
+```bash
 export REWRITE_API_KEY=EMPTY REWRITE_BASE_URL=http://127.0.0.1:8003/v1
+```
 
-# 合成（REWRITE_CONFIG 指定 config，否则默认 config.yaml）
+> ⚠ **两个必查项（漏了合成必失败）：**
+> 1. config 必须**同时**含 qa + rewrite 两个 prompt 路径（同语言）——`synthesize.py` 无条件加载两者，即使 `do_rewrite=false`。本包 config 已配好，勿删。
+> 2. `extra_body` 关思维链那段必须保留——27b 是推理模型，不关会把 `<think>` 塞进正文、JSON 解析失败。
+
+### 第 5 步 · 跑合成
+
+```bash
+# REWRITE_CONFIG 指定用哪个 config（相对当前目录）
 REWRITE_CONFIG=configs/config_zh_qa__SEALED_v3.35.yaml python src/synthesize.py
+```
+产出落在 config 的 `out_dir`（默认 `outputs/zh_qa_prod/`）：
+- `qa_full.jsonl` — 完整产出（含原文+QA，人工审用）
+- `qa_synthetic.jsonl` — 官方 schema `{uid, content, style}`（交付/训练用）
+- `run_stats.json` — 成功率、token、耗时
 
-# 评测
-python eval_l0.py                                    # L0 结构质检
-python run_pairwise_official500.py --local <out>/qa_full.jsonl --n 30 --concurrency 2   # QA 官方对比（判官必须 2 并发）
-python eval_l1_rewrite_official_style.py --local-full <out>/multi_style_full.jsonl      # rewrite official_style
+**验证成功**：看 `run_stats.json` 的 `qa_success_rate` 应接近 1.0；`qa_full.jsonl` 里 content 无 `<think>` 残留。
+
+### 第 6 步 · 评测（可选）
+
+```bash
+# 评测脚本也要用 REWRITE_CONFIG 指定同一个 config（否则默认找 config.yaml 会报错）
+REWRITE_CONFIG=configs/config_zh_qa__SEALED_v3.35.yaml python src/eval_l0.py     # L0 结构/schema 质检
+python src/run_pairwise_official500.py --local outputs/zh_qa_prod/qa_full.jsonl --n 30 --concurrency 2   # 官方对比（判官必须 2 并发）
 ```
 
 **吞吐甜点（5090 实测，见吞吐报告）**：QA 并发 16（中文 v3.30 c16 实测 **85.7 篇/min**、英文 62 篇/min）；rewrite 并发 8（zh 13.6 篇/min、en 10.33 篇/min）。判官必须 2 并发（高并发下 8192 显存竞争会截断 JSON）；rewrite 判官 anchor 默认 4（16 个会撑爆 8192 输入）。
