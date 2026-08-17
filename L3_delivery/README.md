@@ -171,6 +171,17 @@ REWRITE_CONFIG=configs/config_zh_qa__SEALED_v3.35.yaml python src/synthesize.py
 
 **验证成功**：看 `run_stats.json` 的 `qa_success_rate` 应接近 1.0；`qa_full.jsonl` 里 content 无 `<think>` 残留。
 
+**控制合成规模（改 config 的 `seed` / `synthesis` 段）**：
+| 参数 | 作用 | 建议 |
+|---|---|---|
+| `seed.n_docs` | **合成多少篇**（从种子文件取前 N 篇符合条件的） | 先设 3-5 跑通，再放大到几百/几千 |
+| `seed.min_chars` | 原文太短则丢弃（默认 500） | 太短的原文出不了好 QA，一般不用改 |
+| `seed.max_chars` | 原文超长则截断（默认 8000） | 受模型 max_model_len 限制，本地 4096 上下文要调小 |
+| `synthesis.concurrency` | 并发数（几篇同时合成） | 云 API 建议 4-8；本地 5090 甜点 16 |
+| `synthesis.qa_min_pairs` / `qa_max_pairs` | 每篇出几组 QA（默认 3-8） | 一般不改 |
+
+> 例：想合成 500 篇、云 API 并发 8 —— 把 `n_docs: 500`、`concurrency: 8`，种子文件里至少要有 500 篇达到 `min_chars` 的原文。`n_docs` 超过种子实际篇数时，以种子实际数为准。
+
 ### 第 6 步 · 评测（可选）
 
 ```bash
