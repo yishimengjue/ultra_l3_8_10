@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-"""中文 QA v3.30 封板 · 三方对照 Excel：原文 + 官方合成QA + 本地封板QA。
+"""中文 QA v3.35 封板 · 三方对照 Excel：原文 + 官方合成QA + 本地封板QA。
 数据源全部为封板真实产出，未编造。
-- 原文        = 本地产出 _source_text（与官方 seed_text 前120字对齐校验通过 99/99）
+- 原文        = 本地产出 _source_text（与官方 seed_text 前120字对齐校验）
 - 官方合成QA  = data/eval/zh/official_ref_500 的 qa_pairs
-- 本地封板QA  = qa_27b_v330_n100_CLEAN_full content 中「问题：/答案：」问答对
+- 本地封板QA  = v3.35 封板产出 content 中「问题：/答案：」问答对
 """
 import json, re
 from pathlib import Path
@@ -11,9 +11,9 @@ import openpyxl
 from openpyxl.styles import Font, Alignment, PatternFill, Border, Side
 
 ROOT = Path("D:/ultra-fineweb-l3-repro/ultra-fineweb-l3-repro")
-LOCAL = ROOT / "QA/claude_model_test/qa_27b_v330_n100_CLEAN_full.jsonl"
+LOCAL = ROOT / "outputs/qa_27b_v335_aliyun_n100/qa_full.jsonl"
 OFF = ROOT / "data/eval/zh/official_ref_500_2026-08-03.jsonl"
-OUT = ROOT / "L3_delivery/samples/中文QA_v3.30_三方对照_原文_官方_本地.xlsx"
+OUT = ROOT / "L3_delivery/samples/中文QA_v3.35_三方对照_原文_官方_本地.xlsx"
 
 _SURR = re.compile(r"[\ud800-\udfff]")
 def clean(t):

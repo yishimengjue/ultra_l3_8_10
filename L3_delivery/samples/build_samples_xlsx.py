@@ -14,7 +14,7 @@ def load(p, n=None):
     return rows
 
 SOURCES = {
-    "zh_QA": "QA/claude_model_test/qa_27b_v330_n100_CLEAN_full.jsonl",
+    "zh_QA": "outputs/qa_27b_v335_aliyun_n100/qa_full.jsonl",
     "en_QA": "QA/outputs/qa_en_official500_c16/qa_full.jsonl",
     "zh_rewrite": "rewrite/outputs/rewrite_v4_3_5_qwen3_6_27b_v5090_n500/multi_style_full.jsonl",
     "en_rewrite": "en_rewrite/outputs/en_rewrite_v3_7_l1_n50_enfilter3_2026-08-03/multi_style_full.jsonl",
@@ -22,8 +22,8 @@ SOURCES = {
 
 # 封板元信息（真实评测数字）
 META = {
-    "zh_QA":      dict(prompt="qa_gen_v3_30_forcetype_zh(封板)", closeness="2.76(DMX判官)", quality="忠实4.73 / 可答4.60 / 自足3.65 / 覆盖3.24", note="QA content=原文+问答对(原文在前); CLEAN产出四类脏数据归零; 判官DMX claude-sonnet-4-6与其余线35b口径不同"),
-    "en_QA":      dict(prompt="qa_gen_en_v1(hardened)", closeness="3.76", quality="忠实5.0 / 可答5.0 / 自足4.99 / 覆盖3.98", note="QA content=原文+问答对(原文在前)"),
+    "zh_QA":      dict(prompt="qa_gen_v3.35_trim(封板)", closeness="2.847(DMX判官)", quality="忠实4.85 / 可答4.70 / 自足3.76 / 覆盖3.25", note="QA content=原文+问答对(原文在前); 取代v3.30; 四类脏数据归零; 判官DMX claude-sonnet-4-6与其余线35b口径不同"),
+    "en_QA":      dict(prompt="qa_gen_en_v1(hardened)", closeness="3.76(35b)/3.40(DMX)", quality="忠实5.0 / 可答5.0 / 自足4.99 / 覆盖3.98", note="QA content=原文+问答对(原文在前)"),
     "zh_rewrite": dict(prompt="rewrite_styles_v4.3.5-v5090", closeness="4.62(style)", quality="忠实4.87 / overall4.74 / 信息保留4.90", note="4风格:encyclopedia/textbook/blog/abstract"),
     "en_rewrite": dict(prompt="rewrite_styles_v3.7", closeness="人工4.99", quality="忠实5.0 / overall4.98 / 人工198/200 pass", note="4风格;历史用阿里云强模型"),
 }
