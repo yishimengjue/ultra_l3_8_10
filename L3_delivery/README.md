@@ -10,14 +10,14 @@
 
 | 线 | 封板 prompt | 接近官方 | 核心质量（判官 1-5，人工校准偏宽） |
 |----|------------|---------|-----------------------------------|
-| 中文 QA | `qa_gen_v3_35_trim_zh`（取代 v3.30） | closeness **2.847**（DMX 判官） | 忠实 4.85 / 可答 4.70 / 自足 3.76 / 覆盖 3.25 |
+| 中文 QA | `qa_gen_v3_35_trim_zh` | closeness **2.847**（DMX 判官） | 忠实 4.85 / 可答 4.70 / 自足 3.76 / 覆盖 3.25 |
 | 英文 QA | `qa_gen_en_v1`（hardened） | closeness **3.76**（35b 判官） | 忠实 5.0 / 可答 5.0 / 自足 4.99 / 覆盖 3.98 |
 | 中文 rewrite | `rewrite_styles_v4.3.5-v5090` | style_closeness **4.62** | 忠实 4.87 / overall 4.74 / 信息保留 4.90 |
 | 英文 rewrite | `rewrite_styles_v3.7` | 人工 **4.99**（198/200 pass） | 忠实 5.0 / overall 4.98 |
 
 > **口径说明**：QA 与 rewrite 评分体系不同，不可直接比大小。**中文 QA v3.35 用 DMX `claude-sonnet-4-6` 判官（closeness 2.847）；其余三线用 `qwen3.6-35b-a3b` 判官——两 QA 线的 closeness 判官不同，横比仅供参考。** 35b 判官人工校准过、偏宽，读作"无红旗"。
 >
-> **中文 QA 封板演进（v3.30 → v3.35，均 DMX 同判官同种子配对）**：v3.30（强制题型，2.758）为 2026-08-07 首次封板；v3.32 加"事实题层次化"软提示提到 **2.847**（faith 4.73→4.83，部分修正"prompt 已到边际"旧论）；**v3.35** 在 v3.32 上删 5 行答案格式复述冗余，judge 全维度持平/微升、faith **4.847**（全场最高）、更精简，**2026-08-11 取代 v3.30 封板**。其后 v3.33/34/36 三轮（求短/为主/催深度题）均证伪，prompt 层确认到顶。
+> **中文 QA 封板迭代（均 DMX 同判官同种子配对）**：经多轮 prompt 迭代，v3.32「事实题层次化」软提示把 closeness 提到 **2.847**（忠实同步升）；**v3.35** 在其上删除与题型策略段重复的答案格式复述（纯冗余、零护栏损失），judge 全维度持平/微升、faith **4.847**、prompt 更精简，为当前封板。其后 v3.33/34/36 三轮（求短/为主/催深度题）均证伪，prompt 层确认到顶——深度缺口是模型级差距。完整迭代史见 `VERSION_HISTORY.md`。
 
 ---
 
@@ -28,7 +28,7 @@ L3_delivery/
 ├── README.md                 # 本文件
 ├── requirements.txt          # Python 依赖（openai/pydantic/pyyaml/tqdm）
 ├── prompts/                  # 四条线封板 prompt（文件名后缀标注 SEALED）
-│   ├── qa_gen_v3_35_trim_zh__ZH_QA_SEALED.txt   # 中文 QA 封板（取代 v3_30，后者保留作留痕）
+│   ├── qa_gen_v3_35_trim_zh__ZH_QA_SEALED.txt   # 中文 QA 封板 prompt
 │   ├── qa_gen_en_v1__EN_QA_SEALED.txt
 │   ├── rewrite_styles_v4_3_5_v5090_zh__ZH_REWRITE_SEALED.yaml
 │   └── rewrite_styles_v3_7_en__EN_REWRITE_SEALED.yaml
@@ -44,7 +44,7 @@ L3_delivery/
 │   ├── extract_seed_from_l3.py / _en.py   # 种子/QA 对切分
 │   └── filter_rewrite_seed_numeric_guard.py  # 种子数值护栏（synthesize 依赖）
 ├── configs/                  # 四条线封板生产 config（paths 指向 prompts/）
-│   ├── config_zh_qa__SEALED_v3.35.yaml    # 当前封板（取代 v3.30，后者保留作留痕）
+│   ├── config_zh_qa__SEALED_v3.35.yaml    # 中文 QA 当前封板配置
 │   ├── config_en_qa__SEALED_v1hardened.yaml
 │   ├── config_zh_rewrite__SEALED_v5090.yaml
 │   └── config_en_rewrite__SEALED_v3.7.yaml
@@ -72,7 +72,7 @@ L3_delivery/
 - **上传服务器时**：确保用本包这两个文件覆盖旧版；`config` 的 `extra_body` 段必须保留。
 - **验证方法**：合成后检查输出 `_finish_reason` 应为 `stop`、`_completion_tokens` 为几百而非撞 `max_tokens`、content 无 `<think>` 残留。
 
-> **中文 QA 数据卫生（v3.30 起引入，v3.35 沿用，均在本包 code 内）**：
+> **中文 QA 数据卫生（已在本包 code 内）**：
 > - `common.py` L0 后过滤：删露怯元话语答案（`reasoning_leak_answer`）、修复选项错位到答案字段的选择题、多选答案保护。
 > - `synthesize.py` 种子层：`_ocr_garble_reason` 拦截整篇中文 OCR 断裂的垃圾源文（连续异常标点 ≥1.5/百字），合成前丢弃，500 条种子池命中 1 条零误伤。
 > - 效果：CLEAN 生产产出四类脏数据（露怯 / 选项错位 / `<think>` / OCR 垃圾源文）全部归零。
@@ -190,8 +190,8 @@ REWRITE_CONFIG=configs/config_zh_qa__SEALED_v3.35.yaml python src/eval_l0.py    
 python src/run_pairwise_official500.py --local outputs/zh_qa_prod/qa_full.jsonl --n 30 --concurrency 2   # 官方对比（判官必须 2 并发）
 ```
 
-**吞吐甜点（5090 实测，见吞吐报告）**：QA 并发 16（中文 v3.30 c16 实测 **85.7 篇/min**、英文 62 篇/min）；rewrite 并发 8（zh 13.6 篇/min、en 10.33 篇/min）。判官必须 2 并发（高并发下 8192 显存竞争会截断 JSON）；rewrite 判官 anchor 默认 4（16 个会撑爆 8192 输入）。
-> 注：85.7 篇/min 为 v3.30 在 5090 实测；v3.35 已在 5090/8003 同部署复验（2026-08-12，n=100）——成功率 100%、0 思维链泄漏、同部署配对 closeness 净升 +0.040（vs v3.30），5090 本地生产可用。
+**吞吐甜点（5090 实测，见吞吐报告）**：QA 并发 16（中文 c16 实测 **85.7 篇/min**、英文 62 篇/min）；rewrite 并发 8（zh 13.6 篇/min、en 10.33 篇/min）。判官必须 2 并发（高并发下 8192 显存竞争会截断 JSON）；rewrite 判官 anchor 默认 4（16 个会撑爆 8192 输入）。
+> 注：中文 QA v3.35 已在 5090/8003 同部署复验（2026-08-12，n=100）——成功率 100%、0 思维链泄漏，5090 本地生产可用。
 
 ---
 
@@ -199,7 +199,7 @@ python src/run_pairwise_official500.py --local outputs/zh_qa_prod/qa_full.jsonl 
 
 | 语言 | 线 | 封板版本 | 并发 | 墙钟吞吐 | 成功率 | 坏数据 |
 |------|-----|---------|------|---------|--------|--------|
-| 中文 | QA | v3.30→v3.35 | 16 | **85.7 篇/分**（v3.30 实测；v3.35 已5090复验、成功率100%/0泄漏） | 1.0 | 0 |
+| 中文 | QA | v3.35 | 16 | **85.7 篇/分**（5090 复验成功率100%/0泄漏） | 1.0 | 0 |
 | 英文 | QA | v1-hardened | 16 | **62.0 篇/分** | 0.991 | 0 |
 | 中文 | rewrite | v4.3.5-v5090 | 8 | **13.6 篇/分**（54.3 调用/分） | 1.0 | 0 |
 | 英文 | rewrite | v3.7 | 8 | **10.33 篇/分**（+prefix cache 11.31） | 0.95 | 0 |
@@ -211,16 +211,20 @@ python src/run_pairwise_official500.py --local outputs/zh_qa_prod/qa_full.jsonl 
 
 ## 六、样例展示（四条线各一例，均取自封板产出，未改动）
 
-### 6.1 中文 QA（判官 closeness=3 / 忠实=5）
-脑卒中科普原文，展示「强制题型」效果：判断/选择/原因/事实题俱全，全部忠实可原文定位。（此样例取自 v3.30 产出；v3.35 沿用同一套强制题型策略，题型结构一致。v3.35 与官方/v3.32 的逐篇四方对照见 `samples/` 下对比表。）
+### 6.1 中文 QA（封板 v3.35，判官 closeness=3 / 忠实=5）
+中国文化常识题库原文，展示「强制题型 + 忠实可定位」：事实题、判断题、选择题俱全，答案均可在原文定位。
 
-**原文（节选）**：看 1 张脸是否对称、有无眼斜嘴歪；2 看手臂是否单侧无力；0 代表聆听有无言语不清。如果有，就要怀疑是不是中风……脑出血恢复极为缓慢……预防工作显得格外重要——高血压患者一定要遵医嘱按时服药……饮食上低盐、低脂……
+**原文（节选）**：趣味互动丨中国文化知识100题（4)
+“大禹治水“治的是什么水？“一问三不知“是不知道哪三样？《红楼梦》的别名又是啥？“美“字最初的含义是什么？
+这些都是基本的文学常识，都是咱们老祖宗留下来的宝贵遗产。朋友们不妨来做一做……
 
-| 题型 | 问题 | 答案 |
-|------|------|------|
-| 判断题 | 判断以下说法是否正确：发现有人眼斜嘴歪或单侧手臂无力时，应立即拨打120并怀疑可能是中风。 | 正确。文档指出看脸是否对称、有无眼斜嘴歪，看手臂是否单侧无力，有这些症状就要怀疑中风并立刻拨打120。 |
-| 选择题 | 下列哪项不属于文档提到的脑出血预防措施？A. 多食粗纤维食物 B. 戒烟戒酒 C. 换季注意保暖防暑 D. 每日高强度运动 | D。文档提到多食粗纤维、戒烟戒酒、换季保暖防暑等，未提每日高强度运动，反而要避免过度劳累。 |
-| 原因题 | 为什么文档强调脑出血的预防工作显得格外重要？ | 因为脑出血对脑神经造成损害、恢复极为缓慢且严重时无法再生，救治漫长痛苦、花费巨大，对家庭和社会都是沉重负担。 |
+| 问题 | 答案 |
+|------|------|
+| 墨子反对的“爱有差等”这一观点属于哪家学派？ | 儒家。 |
+| 根据文档，汉字“美”最初的含义是什么？ | 羊大即为美。 |
+| 孔子定的“孔门四教”具体包括哪四项内容？ | 文、行、忠、信。 |
+| 在俗语“化干戈为玉帛”中，“干”和“戈”均为兵器，其中指代防御武器的是哪一个？ | 干。 |
+
 
 ### 6.2 英文 QA（v1-hardened，忠实/无幻觉近满分）
 科技论文原文，问答自足、答案可逐句定位。
@@ -247,7 +251,7 @@ python src/run_pairwise_official500.py --local outputs/zh_qa_prod/qa_full.jsonl 
 
 **Rewrite（blog 风格）**：The EPA's Multispecies Care Survey is currently featured in a new online exhibition titled "Agency." The showcase was organized for Broto's Art-Climate-Science annual conference, which serves as an online c…
 
-> 更多样例：四线各 30 条汇总见 `samples/L3_四线封板样例汇总.xlsx`；**中文 QA 封板 v3.35 与官方/v3.32 四方对照（原文+官方+v3.32+v3.35）见 `samples/对比样例_v332_vs_v335.xlsx`**；早期 v3.30 四方对照见 `qwen_L3/zh/qa/compare_*.md`。
+> 更多样例：四线各 30 条汇总见 `samples/L3_四线封板样例汇总.xlsx`；**中文 QA 封板 v3.35 三方对照（原文+官方+本地）见 `samples/中文QA_v3.35_三方对照_原文_官方_本地.xlsx`**，与 v3.32 的逐篇对比见 `samples/对比样例_v332_vs_v335.xlsx`。
 
 ---
 

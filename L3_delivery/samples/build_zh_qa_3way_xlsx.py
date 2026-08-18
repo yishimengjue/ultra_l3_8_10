@@ -70,14 +70,14 @@ border = Border(left=thin, right=thin, top=thin, bottom=thin)
 
 # 标题行
 ws.merge_cells("A1:E1")
-c = ws.cell(1, 1, "中文 QA v3.30 封板 · 三方对照（原文 / 官方合成 / 本地封板）"
-                  "  ｜ closeness 2.76(DMX判官) ｜ 合成模型 qwen3.6-27b ｜ 数据均为封板真实产出")
+c = ws.cell(1, 1, "中文 QA v3.35 封板 · 三方对照（原文 / 官方合成 / 本地封板）"
+                  "  ｜ closeness 2.847(DMX判官) ｜ 合成模型 qwen3.6-27b ｜ 数据均为封板真实产出")
 c.font = Font(bold=True, size=12, color="FFFFFF"); c.fill = title_fill
 c.alignment = Alignment(horizontal="left", vertical="center", wrap_text=True)
 ws.row_dimensions[1].height = 34
 
 cols = ["#", "uid", "原文（source / 种子原文）",
-        "官方合成 QA（official_ref）", "本地封板 QA（v3.30 CLEAN）"]
+        "官方合成 QA（official_ref）", "本地封板 QA（v3.35）"]
 ws.append(cols)
 for i in range(1, len(cols) + 1):
     cc = ws.cell(2, i); cc.font = Font(bold=True); cc.border = border
@@ -108,7 +108,7 @@ ws.freeze_panes = "A3"
 note_r = ws.max_row + 2
 ws.merge_cells(f"A{note_r}:E{note_r}")
 nc = ws.cell(note_r, 1,
-    "说明：本表 99 篇为 v3.30 封板 CLEAN 生产产出（种子层丢弃 1 篇 OCR 垃圾源文，success 1.0）。"
+    "说明：本表为 v3.35 封板生产产出（种子层过滤后 success 1.0）。"
     "原文与官方 seed_text 前 120 字对齐校验 99/99 通过。官方合成 QA 取自官方参考 official_ref_500；"
     "本地封板 QA 取自 content 内「问题：/答案：」问答对（content 完整格式=原文在前+问答对在后）。"
     "closeness 2.76 由 DMX claude-sonnet-4-6 盲评 pairwise 得出，与其他线判官口径不同，不可直接比大小。"

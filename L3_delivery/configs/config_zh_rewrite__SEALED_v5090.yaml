@@ -31,7 +31,7 @@ synthesis:
 
 paths:
   prompt_dir: "prompts"
-  qa_prompt_zh: "prompts/qa_gen_v3_30_forcetype_zh__ZH_QA_SEALED.txt"  # synthesize 无条件加载 qa+rewrite 两者，即使 do_qa=false 也需此行
+  qa_prompt_zh: "prompts/qa_gen_v3_35_trim_zh__ZH_QA_SEALED.txt"  # synthesize 无条件加载 qa+rewrite 两者，即使 do_qa=false 也需此行
   rewrite_prompt_zh: "prompts/rewrite_styles_v4_3_5_v5090_zh__ZH_REWRITE_SEALED.yaml"
   out_dir: "outputs/zh_rewrite_prod"
   eval_dir: "data/eval/zh_rewrite_prod"
