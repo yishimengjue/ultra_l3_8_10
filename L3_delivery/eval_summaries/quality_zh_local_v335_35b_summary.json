@@ -1,0 +1,13 @@
+{
+  "tag": "zh_local_v335_35b",
+  "judge_model": "qwen3.6-35b-a3b",
+  "mode": "local",
+  "lang": "zh",
+  "n": 98,
+  "means": {
+    "faithfulness_score": 4.98,
+    "answerability_score": 5.0,
+    "self_containment_score": 4.122,
+    "coverage_score": 4.49
+  }
+}

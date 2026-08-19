@@ -1,0 +1,13 @@
+{
+  "tag": "en_local_v1hardened_35b",
+  "judge_model": "qwen3.6-35b-a3b",
+  "mode": "local",
+  "lang": "en",
+  "n": 100,
+  "means": {
+    "faithfulness_score": 4.7,
+    "answerability_score": 4.93,
+    "self_containment_score": 4.74,
+    "coverage_score": 4.74
+  }
+}
