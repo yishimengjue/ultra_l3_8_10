@@ -1,14 +1,14 @@
 """阶段 C：合成 pipeline。
 读取 L2 种子切片 -> 对每篇跑 QA 生成 + 四种风格改写 -> 解析 -> 组装官方 schema -> 落盘。
 
-用法（仓库根目录）：
-    export SILICONFLOW_API_KEY=sk-xxx
-    python src/synthesize.py
-输出：
-    data/output/qa_synthetic.jsonl            (官方 schema: uid, content, style)
-    data/output/multi_style_synthetic.jsonl   (官方 schema)
-    data/output/*_full.jsonl                  (含 _source_text，供评测用)
-    data/output/run_stats.json                (成功率统计 = L0 的一部分)
+用法（仓库根目录，code/ 需改名为 src/）：
+    export DASHSCOPE_API_KEY=sk-xxx        # 云 API；或本地 vLLM 用 REWRITE_API_KEY=EMPTY REWRITE_BASE_URL=...
+    REWRITE_CONFIG=configs/config_zh_qa__SEALED_v3.35.yaml python src/synthesize.py
+输出（落在 config 的 out_dir，默认 outputs/）：
+    <out_dir>/qa_synthetic.jsonl            (官方 schema: uid, content, style)
+    <out_dir>/multi_style_synthetic.jsonl   (官方 schema)
+    <out_dir>/*_full.jsonl                  (含 _source_text，供评测用)
+    <out_dir>/run_stats.json                (成功率统计 = L0 的一部分)
 """
 import sys
 import uuid
@@ -20,6 +20,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from tqdm import tqdm
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+# 下行为兼容旧开发环境的 scripts/ 目录;交付包中模块已随 code/ 一起提供,此路径不存在也不报错
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 import common as C
 from filter_rewrite_seed_numeric_guard import numeric_guard_reasons

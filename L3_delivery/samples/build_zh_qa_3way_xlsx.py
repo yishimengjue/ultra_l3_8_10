@@ -111,7 +111,7 @@ nc = ws.cell(note_r, 1,
     "说明：本表为 v3.35 封板生产产出（种子层过滤后 success 1.0）。"
     "原文与官方 seed_text 前 120 字对齐校验 99/99 通过。官方合成 QA 取自官方参考 official_ref_500；"
     "本地封板 QA 取自 content 内「问题：/答案：」问答对（content 完整格式=原文在前+问答对在后）。"
-    "closeness 2.76 由 DMX claude-sonnet-4-6 盲评 pairwise 得出，与其他线判官口径不同，不可直接比大小。"
+    "closeness 2.847(封板 v3.35) 由 DMX claude-sonnet-4-6 盲评 pairwise 得出，与其他线判官口径不同，不可直接比大小。"
     "原文中的 � 为种子源数据本身的 OCR/编码乱码，非本流程引入。所有数字来自真实评测输出，无编造。")
 nc.font = Font(italic=True, color="555555")
 nc.alignment = Alignment(wrap_text=True, vertical="top")
